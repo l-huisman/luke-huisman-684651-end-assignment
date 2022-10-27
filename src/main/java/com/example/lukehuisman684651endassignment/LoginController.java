@@ -26,4 +26,9 @@ public class LoginController extends BaseController {
         // TODO: Create a more proper login system
         return username.equals("admin") && password.equals("admin");
     }
+
+    @FXML
+    public void onCloseButtonClick(Event event) {
+        closeProgram(event);
+    }
 }

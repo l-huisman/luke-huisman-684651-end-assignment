@@ -37,4 +37,10 @@ public class BaseController {
         }
         return root;
     }
+
+    // Method to close the Program
+    protected void closeProgram(Event event) {
+        ((Node) event.getSource()).getScene().getWindow().hide();
+        event.consume();
+    }
 }
