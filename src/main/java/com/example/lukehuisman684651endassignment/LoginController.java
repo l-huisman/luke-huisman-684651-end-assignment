@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+import java.util.Objects;
+
 public class LoginController extends BaseController {
     @FXML
     private TextField usernameField;
@@ -12,18 +14,16 @@ public class LoginController extends BaseController {
     private TextField passwordField;
     @FXML
     private Label errorLabel;
+    UserService userService = new UserService();
+
     @FXML
     public void onLoginButtonClick(Event event) {
-        String username = usernameField.getText();
+        int userID = Integer.parseInt(usernameField.getText());
         String password = passwordField.getText();
-        if (checkCredentials(username, password))
-            switchStage("main-view.fxml", new MainController(), event);
+        User user = userService.checkCredentialsOfEmployee(userID, password);
+        if (!Objects.isNull(user))
+            switchStage("main-view.fxml", new MainController(user), event);
         errorLabel.setText("Invalid username or password");
-    }
-
-    private boolean checkCredentials(String username, String password) {
-        // TODO: Create a more proper login system
-        return username.equals("admin") && password.equals("admin");
     }
 
     @FXML

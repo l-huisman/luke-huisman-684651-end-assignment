@@ -1,0 +1,2 @@
+1,Luke Huisman,Welkom2022,684651@student.inholland.nl,EMPLOYEE
+2,Luka Otte,Welkom2022,idk@student.inholland.nl,CUSTOMER

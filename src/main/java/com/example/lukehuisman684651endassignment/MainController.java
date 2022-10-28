@@ -14,13 +14,21 @@ public class MainController extends BaseController implements Initializable {
 
     @FXML
     private GridPane mainStageGridPane;
+    User user;
+
+    MainController(User user) {
+        this.user = user;
+    }
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void initialize(URL url, ResourceBundle resourceBundle)
+    {
+
     }
 
     @FXML
-    public void onCloseButtonClick(Event event) {
+    public void onCloseButtonClick(Event event)
+    {
         closeProgram(event);
     }
 
