@@ -12,7 +12,6 @@ public class LoginController extends BaseController {
     private TextField passwordField;
     @FXML
     private Label errorLabel;
-
     @FXML
     public void onLoginButtonClick(Event event) {
         String username = usernameField.getText();

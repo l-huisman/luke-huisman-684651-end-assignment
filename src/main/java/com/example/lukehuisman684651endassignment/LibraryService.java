@@ -30,14 +30,14 @@ public class LibraryService
         {
             int daysTooLate = getDaysTooLate(libraryItem);
             if (daysTooLate > 0)
-                message = "Item is ("+ daysTooLate +") too late!";
+                message = "Item is ("+ daysTooLate +") days too late!";
             else
                 message = "Item is received!";
             libraryItem.setLent(false);
             libraryItem.setMemberIdentifier(0);
             libraryItem.setDateLent(null);
+            libraryDAO.editLibraryItemInFile(libraryItem);
         }
-        libraryDAO.editLibraryItemInFile(libraryItem);
         return message;
     }
 

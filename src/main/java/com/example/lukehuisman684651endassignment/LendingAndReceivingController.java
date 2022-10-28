@@ -34,6 +34,7 @@ public class LendingAndReceivingController {
     private void lendingButtonClicked() {
         if (hasValidTextFieldInputForLending())
              lendingCritereaLabel.setText(libraryService.lendLibraryItem(Integer.parseInt(lendingItemCodeTextField.getText()), Integer.parseInt(lendingMemberIdentifierTextField.getText())));
+        
     }
 
     @FXML
@@ -43,6 +44,7 @@ public class LendingAndReceivingController {
     }
 
     private boolean hasValidTextFieldInputForLending() {
+        
         if (lendingItemCodeTextField.getText().isEmpty() || lendingMemberIdentifierTextField.getText().isEmpty()) {
             lendingErrorLabel.setText("Please fill in all fields");
             return false;
@@ -60,6 +62,7 @@ public class LendingAndReceivingController {
 
 
     private boolean hasValidTextFieldInputForReceiving() {
+        
         if (receivingItemCodeTextField.getText().isEmpty() || receivingMemberIdentifierTextField.getText().isEmpty()) {
             receivingErrorLabel.setText("Please fill in all fields");
             return false;

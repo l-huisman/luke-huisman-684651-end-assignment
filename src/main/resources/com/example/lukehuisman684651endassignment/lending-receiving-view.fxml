@@ -24,7 +24,7 @@
                 <TextField fx:id="lendingMemberIdentifierTextField" layoutX="35.0" layoutY="90.0" prefHeight="25.0" prefWidth="345.0" promptText="Member identifier" />
                 <Button layoutX="35.0" layoutY="140.0" mnemonicParsing="false" onMouseClicked="#lendingButtonClicked" prefHeight="25.0" prefWidth="110.0" text="Lend item" />
                 <Label fx:id="lendingErrorLabel" layoutX="35.0" layoutY="190.0" />
-            <Label fx:id="lendingCritereaLabel" layoutX="35.0" layoutY="190.0" text="Label" />
+            <Label fx:id="lendingCritereaLabel" layoutX="35.0" layoutY="190.0" text="" />
             </children>
         </Pane>
         <Pane prefHeight="503.0" prefWidth="319.0" style="-fx-background-color: white" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -36,7 +36,7 @@
                 <TextField fx:id="receivingItemCodeTextField" layoutX="35.0" layoutY="40.0" prefHeight="25.0" prefWidth="345.0" promptText="Item code" />
                 <Label fx:id="receivingErrorLabel" layoutX="35.0" layoutY="190.0" />
             <TextField fx:id="receivingMemberIdentifierTextField" layoutX="35.0" layoutY="90.0" prefHeight="25.0" prefWidth="345.0" promptText="Member identifier" />
-            <Label fx:id="receivingCritereaLabel" layoutX="35.0" layoutY="190.0" text="Label" />
+            <Label fx:id="receivingCritereaLabel" layoutX="35.0" layoutY="190.0" text="" />
             </children>
         </Pane>
     </children>

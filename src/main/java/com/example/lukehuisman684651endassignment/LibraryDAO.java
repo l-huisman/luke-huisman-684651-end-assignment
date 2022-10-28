@@ -6,6 +6,7 @@ import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class LibraryDAO {
@@ -23,12 +24,10 @@ public class LibraryDAO {
             String line = br.readLine();
             while (line != null) {
                 String[] attributes = line.split(",");
-                if (attributes[0].equals("Book")) {
+                if (attributes[0].equals("Book"))
                     libraryItems.add(createBook(attributes));
-                    if (attributes[0].equals("Movie")) {
-                        libraryItems.add(createMovie(attributes));
-                    }
-                }
+                if (attributes[0].equals("Movie"))
+                    libraryItems.add(createMovie(attributes));
                 line = br.readLine();
             }
             br.close();
@@ -40,11 +39,18 @@ public class LibraryDAO {
 
     private LibraryItem createMovie(String[] attributes)
     {
-        return new Movie(Integer.parseInt(attributes[1]), attributes[2], Boolean.parseBoolean(attributes[3]), Integer.parseInt(attributes[4]), LocalDate.parse(attributes[5]), attributes[6]);
+        return new Movie(Integer.parseInt(attributes[1]), attributes[2], Boolean.parseBoolean(attributes[3]), Integer.parseInt(attributes[4]), ifNullSetDateNow(attributes[5]), attributes[6]);
     }
 
     private LibraryItem createBook(String[] attributes) {
-        return new Book(Integer.parseInt(attributes[1]), attributes[2], Boolean.parseBoolean(attributes[3]), Integer.parseInt(attributes[4]), LocalDate.parse(attributes[5]), attributes[6]);
+        return new Book(Integer.parseInt(attributes[1]), attributes[2], Boolean.parseBoolean(attributes[3]), Integer.parseInt(attributes[4]), ifNullSetDateNow(attributes[5]), attributes[6]);
+    }
+
+    private LocalDate ifNullSetDateNow(String attribute)
+    {
+        if (attribute.equals("null"))
+            return LocalDate.now();
+        return LocalDate.parse(attribute);
     }
 
     // Code to update the txt file containing all movies found here https://www.youtube.com/watch?v=TpyRKom0X_s
@@ -75,14 +81,14 @@ public class LibraryDAO {
                     author = x.next();
                 if (itemType.equals("Movie"))
                     director = x.next();
-                // Big bug here
-                if (itemCode.equals(String.valueOf(libraryItem.getItemCode())) && !recordChanged)
+                if (itemCode.equals(String.valueOf(libraryItem.getItemCode())) && !recordChanged && !Objects.equals(libraryItem.isLent(), Boolean.parseBoolean(isLent)))
                 {
                     if (itemType.equals("Book"))
                         pw.print(itemType + "," + itemCode + "," + title + "," + libraryItem.isLent() + "," + libraryItem.getMemberIdentifier() + "," + libraryItem.getDateLent() + "," + author + "\n");
                     if (itemType.equals("Movie"))
                         pw.print(itemType + "," + itemCode + "," + title + "," + libraryItem.isLent() + "," + libraryItem.getMemberIdentifier() + "," + libraryItem.getDateLent() + "," + director + "\n");
                     recordChanged = true;
+                    continue;
                 }
                 if (itemType.equals("Book"))
                     pw.print(itemType + "," + itemCode + "," + title + "," + isLent + "," + memberIdentifier + "," + dateLent + "," + author + "\n");
