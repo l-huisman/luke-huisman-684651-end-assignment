@@ -18,7 +18,7 @@ public class LoginController extends BaseController {
         String username = usernameField.getText();
         String password = passwordField.getText();
         if (checkCredentials(username, password))
-            switchStage("lending-receiving-view.fxml", new LendingAndRecievingController(), event);
+            switchStage("main-view.fxml", new MainController(), event);
         errorLabel.setText("Invalid username or password");
     }
 

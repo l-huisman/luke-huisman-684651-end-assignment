@@ -1,0 +1,9 @@
+Book,1,The Player's Handbook,false,0,2018-12-27,Gary Gygax
+Book,1,The Player's Handbook,false,0,2018-12-27,Gary Gygax
+Book,1,The Player's Handbook,false,0,2018-12-27,Gary Gygax
+Book,2,The Dungeon Master's Guide,false,0,2018-12-27,Gary Gygax
+Book,2,The Dungeon Master's Guide,false,0,2018-12-27,Gary Gygax
+Book,2,The Dungeon Master's Guide,false,0,2018-12-27,Gary Gygax
+Book,3,The Monster Manual,false,0,2018-12-27,Gary Gygax
+Book,3,The Monster Manual,false,0,2018-12-27,Gary Gygax
+Book,3,The Monster Manual,false,0,2018-12-27,Gary Gygax

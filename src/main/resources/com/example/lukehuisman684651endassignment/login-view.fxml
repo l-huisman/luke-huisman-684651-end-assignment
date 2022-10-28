@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<GridPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="275.0" prefWidth="455.0" stylesheets="@stylesheet.css"
+<GridPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="275.0" prefWidth="455.0" stylesheets="@login-stylesheet.css"
           xmlns="http://javafx.com/javafx/17.0.2-ea"
           fx:controller="com.example.lukehuisman684651endassignment.LoginController">
     <columnConstraints>
@@ -17,7 +17,7 @@
         <RowConstraints maxHeight="62.0" minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES"/>
         <RowConstraints maxHeight="62.0" minHeight="10.0" prefHeight="57.0" vgrow="SOMETIMES"/>
     </rowConstraints>
-    <Label style="-fx-font-size: 32px" stylesheets="@stylesheet.css" text="Login" textFill="#2D2D2D"
+    <Label style="-fx-font-size: 32px" stylesheets="@login-stylesheet.css" text="Login" textFill="#2D2D2D"
            GridPane.rowIndex="0">
         <GridPane.margin>
             <Insets left="30.0"/>
@@ -35,7 +35,7 @@
             <Insets left="30.0"/>
         </GridPane.margin>
     </PasswordField>
-    <Button onMouseClicked="#onLoginButtonClick" prefHeight="25.0" prefWidth="75.0" stylesheets="@stylesheet.css"
+    <Button onMouseClicked="#onLoginButtonClick" prefHeight="25.0" prefWidth="75.0" stylesheets="@login-stylesheet.css"
             text="Login" GridPane.rowIndex="3">
         <GridPane.margin>
             <Insets left="30.0"/>
@@ -46,8 +46,9 @@
             <Insets left="30.0"/>
         </GridPane.margin>
     </Label>
-    <Button fx:id="closeButton" onMouseClicked="#onCloseButtonClick" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0"
-            stylesheets="@stylesheet.css" text="X" textAlignment="CENTER">
+    <Button fx:id="closeButton" onMouseClicked="#onCloseButtonClick" mnemonicParsing="false" prefHeight="35.0"
+            prefWidth="35.0"
+            stylesheets="@login-stylesheet.css" text="X" textAlignment="CENTER">
         <font>
             <Font size="16.0"/>
         </font>
