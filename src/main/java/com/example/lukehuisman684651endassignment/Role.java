@@ -1,6 +1,5 @@
 package com.example.lukehuisman684651endassignment;
 
-public enum Role
-{
+public enum Role {
     EMPLOYEE, CUSTOMER
 }

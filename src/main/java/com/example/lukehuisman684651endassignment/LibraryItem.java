@@ -29,20 +29,20 @@ public abstract class LibraryItem {
         return isLent;
     }
 
-    public int getMemberIdentifier() {
-        return memberIdentifier;
-    }
-
-    public LocalDate getDateLent() {
-        return dateLent;
-    }
-
     public void setLent(boolean isLent) {
         this.isLent = isLent;
     }
 
+    public int getMemberIdentifier() {
+        return memberIdentifier;
+    }
+
     public void setMemberIdentifier(int memberIdentifier) {
         this.memberIdentifier = memberIdentifier;
+    }
+
+    public LocalDate getDateLent() {
+        return dateLent;
     }
 
     public void setDateLent(LocalDate dateLent) {

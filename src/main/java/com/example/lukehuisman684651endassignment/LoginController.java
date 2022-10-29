@@ -8,13 +8,13 @@ import javafx.scene.control.TextField;
 import java.util.Objects;
 
 public class LoginController extends BaseController {
+    UserService userService = new UserService();
     @FXML
     private TextField usernameField;
     @FXML
     private TextField passwordField;
     @FXML
     private Label errorLabel;
-    UserService userService = new UserService();
 
     @FXML
     public void onLoginButtonClick(Event event) {

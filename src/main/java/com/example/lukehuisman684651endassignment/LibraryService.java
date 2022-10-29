@@ -2,16 +2,13 @@ package com.example.lukehuisman684651endassignment;
 
 import java.time.LocalDate;
 
-public class LibraryService
-{
+public class LibraryService {
     LibraryDAO libraryDAO = new LibraryDAO();
 
-    public String lendLibraryItem(int itemCode, int memberIdentifier)
-    {
+    public String lendLibraryItem(int itemCode, int memberIdentifier) {
         // This method checks if the item is available to lend and then lends it to the member
         LibraryItem libraryItem = libraryDAO.getAvailableLibraryItem(itemCode);
-        if (libraryItem != null)
-        {
+        if (libraryItem != null) {
             libraryItem.setLent(true);
             libraryItem.setMemberIdentifier(memberIdentifier);
             libraryItem.setDateLent(LocalDate.now());
@@ -21,16 +18,14 @@ public class LibraryService
         return "Item is not available";
     }
 
-    public String receiveLibraryItem(int itemCode, int memberIdentifier)
-    {
+    public String receiveLibraryItem(int itemCode, int memberIdentifier) {
         // This method checks if the item is lent to the member and if it is too late then receives it
         String message = "Item wasn't lent by member: " + memberIdentifier;
         LibraryItem libraryItem = libraryDAO.getLentLibraryItem(itemCode, memberIdentifier);
-        if (libraryItem != null)
-        {
+        if (libraryItem != null) {
             int daysTooLate = getDaysTooLate(libraryItem);
             if (daysTooLate > 0)
-                message = "Item is ("+ daysTooLate +") days too late!";
+                message = "Item is (" + daysTooLate + ") days too late!";
             else
                 message = "Item is received!";
             libraryItem.setLent(false);
@@ -41,8 +36,7 @@ public class LibraryService
         return message;
     }
 
-    public int getDaysTooLate(LibraryItem libraryItem)
-    {
+    public int getDaysTooLate(LibraryItem libraryItem) {
         int daysTooLate = 0;
         if (libraryItem.getDateLent().plusDays(21).isBefore(LocalDate.now()))
             daysTooLate = LocalDate.now().getDayOfYear() - libraryItem.getDateLent().plusDays(21).getDayOfYear();
