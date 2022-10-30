@@ -17,12 +17,13 @@
                 <Insets left="30.0" top="10.0"/>
             </GridPane.margin>
         </Label>
-        <TableView prefHeight="255.0" prefWidth="855.0" GridPane.rowIndex="1">
+        <TableView fx:id="membersTable" prefHeight="255.0" prefWidth="855.0" GridPane.rowIndex="1">
             <columns>
-                <TableColumn prefWidth="100.0" resizable="false" text="Identifier"/>
-                <TableColumn prefWidth="150.0" resizable="false" text="First name"/>
-                <TableColumn prefWidth="150.0" resizable="false" text="Last name"/>
-                <TableColumn prefWidth="200.0" resizable="false" text="Birth date"/>
+                <TableColumn fx:id="userIDColumn" prefWidth="100.0" resizable="false" text="Identifier"/>
+                <TableColumn fx:id="firstNameColumn" prefWidth="150.0" resizable="false" text="First name"/>
+                <TableColumn fx:id="lastNameColumn" prefWidth="150.0" resizable="false" text="Last name"/>
+                <TableColumn fx:id="birthDateColumn" prefWidth="200.0" resizable="false" text="Birth date"/>
+                <TableColumn fx:id="roleColumn" prefWidth="150.0" resizable="false" text="Role"/>
             </columns>
             <GridPane.margin>
                 <Insets left="30.0" right="30.0"/>

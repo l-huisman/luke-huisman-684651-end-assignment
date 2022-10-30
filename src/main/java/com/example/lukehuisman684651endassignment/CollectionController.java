@@ -34,7 +34,7 @@ public class CollectionController implements Initializable {
         itemCodeColumn.setCellValueFactory(new PropertyValueFactory<>("itemCode"));
         availableColumn.setCellValueFactory(new PropertyValueFactory<>("availability"));
         titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
-        if (checkIfBook(libraryItems))
+        if (libraryItems.get(0) instanceof Book)
             authorDirectorColumn.setCellValueFactory(new PropertyValueFactory<>("author"));
         else
             authorDirectorColumn.setCellValueFactory(new PropertyValueFactory<>("director"));

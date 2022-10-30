@@ -9,7 +9,7 @@ public abstract class LibraryItem {
     private int memberIdentifier;
     private LocalDate dateLent;
 
-    protected LibraryItem(int itemCode, String title, boolean availability, int memberIdentifier, LocalDate dateLent) {
+    public LibraryItem(int itemCode, String title, boolean availability, int memberIdentifier, LocalDate dateLent) {
         this.itemCode = itemCode;
         this.title = title;
         this.availability = availability;
@@ -25,7 +25,7 @@ public abstract class LibraryItem {
         return title;
     }
 
-    public boolean isAvailability() {
+    public boolean getAvailability() {
         return availability;
     }
 

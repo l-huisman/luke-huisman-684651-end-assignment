@@ -1,17 +1,21 @@
 package com.example.lukehuisman684651endassignment;
 
+import java.time.LocalDate;
+
 public class User {
     private int userID;
-    private String username;
+    private String firstName;
+    private String lastName;
+    private LocalDate birthDate;
     private String password;
-    private String email;
     private Role role;
 
-    public User(int userID, String username, String password, String email, Role role) {
+    public User(int userID, String firstName, String lastName, String password, LocalDate birthDate, Role role) {
         this.userID = userID;
-        this.username = username;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthDate = birthDate;
         this.password = password;
-        this.email = email;
         this.role = role;
     }
 
@@ -19,19 +23,42 @@ public class User {
         return userID;
     }
 
-    public String getUsername() {
-        return username;
+    public String getFirstName() {
+        return firstName;
     }
 
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
+    }
     public String getPassword() {
         return password;
     }
 
-    public String getEmail() {
-        return email;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Role getRole() {
         return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }
