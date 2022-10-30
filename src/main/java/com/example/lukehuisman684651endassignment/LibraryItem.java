@@ -25,12 +25,12 @@ public abstract class LibraryItem {
         return title;
     }
 
-    public boolean getAvailability() {
+    public boolean isAvailability() {
         return availability;
     }
 
-    public void setAvailability(boolean isLent) {
-        this.availability = isLent;
+    public void setAvailability(boolean availability) {
+        this.availability = availability;
     }
 
     public int getMemberIdentifier() {
