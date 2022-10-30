@@ -32,9 +32,9 @@
                 <Insets left="30.0" right="30.0"/>
             </GridPane.margin>
             <children>
-                <TextField layoutX="30.0" layoutY="40.0" prefHeight="30.0" prefWidth="300.0" promptText="First name"/>
-                <TextField layoutX="30.0" layoutY="90.0" prefHeight="30.0" prefWidth="300.0" promptText="Last name"/>
-                <DatePicker layoutX="350.0" layoutY="40.0" prefHeight="30.0" prefWidth="300.0" promptText="Birth date"/>
+                <TextField fx:id="firstNameTextField" layoutX="30.0" layoutY="40.0" prefHeight="30.0" prefWidth="300.0" promptText="First name"/>
+                <TextField fx:id="lastNameTextField" layoutX="30.0" layoutY="90.0" prefHeight="30.0" prefWidth="300.0" promptText="Last name"/>
+                <DatePicker fx:id="birthDatePicker" layoutX="350.0" layoutY="40.0" prefHeight="30.0" prefWidth="300.0" promptText="Birth date"/>
                 <Label fx:id="errorLabel" layoutX="30.0" layoutY="128.0" textFill="RED">
                     <font>
                         <Font size="16.0"/>

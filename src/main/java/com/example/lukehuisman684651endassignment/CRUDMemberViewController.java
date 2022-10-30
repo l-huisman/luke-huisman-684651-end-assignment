@@ -21,7 +21,7 @@ public class CRUDMemberViewController extends BaseController implements Initiali
     private DatePicker birthDatePicker;
     @FXML
     private Label errorLabel;
-    private User user = new User();
+    private User user;
 
     public CRUDMemberViewController() {
     }
@@ -45,20 +45,23 @@ public class CRUDMemberViewController extends BaseController implements Initiali
             errorLabel.setText("Please fill in all fields\n(No numbers allowed in first name and last name!)");
             return;
         }
+        user = new User();
         user.setFirstName(firstNameTextField.getText());
         user.setLastName(lastNameTextField.getText());
         user.setBirthDate(birthDatePicker.getValue());
         userService.addUser(user);
 
-        switchStageWithoutController("members-view.fxml", event);
+        controller = loadTab("members-view.fxml", tab);
+        controller.setTab(tab);
     }
 
     @FXML
     private void cancelButtonClicked(MouseEvent event) {
-        switchStageWithoutController("members-view.fxml", event);
+        controller = loadTab("members-view.fxml", tab);
+        controller.setTab(tab);
     }
 
     private boolean checkIfFieldsAreFilled() {
-        return false;
+        return true;
     }
 }

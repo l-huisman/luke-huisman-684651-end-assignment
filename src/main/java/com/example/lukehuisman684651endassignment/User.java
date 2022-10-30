@@ -45,7 +45,9 @@ public class User {
     public LocalDate getBirthDate() {
         return birthDate;
     }
-
+    public String getFormattedBirthDate() {
+        return birthDate.format(java.time.format.DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+    }
     public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }

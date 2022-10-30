@@ -27,7 +27,6 @@ public class MainController extends BaseController implements Initializable {
     private Tab collectionTab;
     @FXML
     private Tab membersTab;
-    private BaseController controller;
 
 
     MainController(User user) {
@@ -50,10 +49,12 @@ public class MainController extends BaseController implements Initializable {
                             loadTab("lending-receiving-view.fxml", lendingReceivingTab);
                             break;
                         case "collectionTab":
-                            loadTab("collection-view.fxml", collectionTab);
+                            controller = loadTab("collection-view.fxml", collectionTab);
+                            controller.setTab(collectionTab);
                             break;
                         case "membersTab":
-                            loadTab("members-view.fxml", membersTab);
+                            controller = loadTab("members-view.fxml", membersTab);
+                            controller.setTab(membersTab);
                             break;
                     }
                 }
@@ -61,15 +62,7 @@ public class MainController extends BaseController implements Initializable {
         );
     }
 
-    private void loadTab(String s, Tab tab) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(s));
-            tab.setContent(loader.load());
-            controller = loader.getController();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+
 
     @FXML
     public void onCloseButtonClick(Event event) {

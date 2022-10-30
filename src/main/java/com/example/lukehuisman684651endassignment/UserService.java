@@ -14,6 +14,17 @@ public class UserService {
     }
 
     public void addUser(User user) {
+        user.setPassword(setStandardPassword(user));
+        user.setRole(Role.CUSTOMER);
         userDAO.addUser(user);
+    }
+
+    private String setStandardPassword(User user) {
+        String lastname = deleteSpaces(user.getLastName());
+        return user.getFirstName().substring(0, 1) + lastname + user.getBirthDate().getYear() + "!";
+    }
+
+    private String deleteSpaces(String lastName) {
+        return lastName.replace(" ", "");
     }
 }

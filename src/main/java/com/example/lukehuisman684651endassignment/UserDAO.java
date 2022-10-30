@@ -1,14 +1,13 @@
 package com.example.lukehuisman684651endassignment;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class UserDAO {
 
@@ -54,12 +53,48 @@ public class UserDAO {
     }
 
     public void addUser(User user) {
+        if (!fileExists())
+            createNewFile();
+        if (userExists(user.getFirstName(), user.getLastName()))
+            return;
+        int nextAvailableUserID = getNextAvailableUserID();
 
+        try {
+            File file = new File(USERSFILEPATH);
+            FileWriter fw = new FileWriter(file,true);
+            fw.write("\n" + nextAvailableUserID + "," + user.getFirstName() + "," + user.getLastName() + "," + user.getPassword() + "," + user.getBirthDate() + "," + user.getRole());
+            fw.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private int getNextAvailableUserID() {
+        List<User> users = getUsers();
+        int highestUserID = 0;
+        for (User user : users) {
+            if (user.getUserID() > highestUserID)
+                highestUserID = user.getUserID();
+        }
+        return highestUserID += 1;
+    }
+
+    private boolean userExists(String firstName, String lastName) {
+        List<User> users = getUsers();
+        for (User user : users) {
+            if (user.getFirstName().equals(firstName) && user.getLastName().equals(lastName))
+                return true;
+        }
+        return false;
     }
 
     private void createNewFile() {
         try {
-            Files.createFile(Paths.get(USERSFILEPATH));
+            //Create the file with one user
+            File file = new File(USERSFILEPATH);
+            FileWriter fw = new FileWriter(file);
+            fw.write("1,Luke,Huisman,admin,2003-04-06,EMPLOYEE");
+            fw.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

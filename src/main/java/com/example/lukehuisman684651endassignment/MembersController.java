@@ -2,6 +2,7 @@ package com.example.lukehuisman684651endassignment;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -35,7 +36,7 @@ public class MembersController extends BaseController implements Initializable {
         userIDColumn.setCellValueFactory(new PropertyValueFactory<>("userID"));
         firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
-        birthDateColumn.setCellValueFactory(new PropertyValueFactory<>("birthDate"));
+        birthDateColumn.setCellValueFactory(new PropertyValueFactory<>("formattedBirthDate"));
         roleColumn.setCellValueFactory(new PropertyValueFactory<>("role"));
 
         membersTable.getItems().addAll(userService.getUsers());
@@ -43,7 +44,8 @@ public class MembersController extends BaseController implements Initializable {
 
     @FXML
     public void addMemberButtonClicked(MouseEvent event) {
-        switchStageWithoutController("crud-member-view.fxml", event);
+        controller = loadTab("crud-member-view.fxml", tab);
+        controller.setTab(tab);
     }
 
     @FXML
