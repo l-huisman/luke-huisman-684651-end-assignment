@@ -1,0 +1,41 @@
+root {
+    margin: 0;
+    padding: 0;
+}
+
+.gridpane {
+    -fx-background-fill: black, white;
+    -fx-background-insets: 0, 1;
+}
+
+.button {
+    -fx-background-color: #0078D7;
+    -fx-text-fill: white;
+    -fx-border: none;
+}
+
+.button:hover {
+    -fx-background-color: #0063B1;
+}
+
+.button:pressed {
+    -fx-background-color: #004578;
+}
+
+#errorLabel {
+    -fx-text-fill: red;
+}
+
+#closeButton {
+    -fx-background-color: #F4F4F4;
+    -fx-border: none;
+    -fx-text-fill: black;
+}
+
+#closeButton:hover {
+    -fx-background-color: #D8D8D8;
+}
+
+#closeButton:pressed {
+    -fx-background-color: #A6A6A6;
+}

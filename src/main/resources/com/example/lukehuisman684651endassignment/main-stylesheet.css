@@ -1,0 +1,41 @@
+root {
+    margin: 0;
+    padding: 0;
+}
+
+.tab-pane {
+    -fx-background-color: #333333;
+}
+
+.button {
+    -fx-background-color: #0078D7;
+    -fx-text-fill: #ffffff;
+    -fx-border: none;
+}
+
+.button:hover {
+    -fx-background-color: #0063B1;
+}
+
+.button:pressed {
+    -fx-background-color: #004578;
+}
+
+#closeButton {
+    -fx-background-color: #F4F4F4;
+    -fx-border: none;
+    -fx-text-fill: black;
+}
+
+#closeButton:hover {
+    -fx-background-color: #D8D8D8;
+}
+
+#closeButton:pressed {
+    -fx-background-color: #A6A6A6;
+}
+
+#errorLabel, #lendingErrorLabel, #receivingErrorLabel {
+    -fx-text-fill: #FF0000;
+    -fx-font-size: 16px;
+}

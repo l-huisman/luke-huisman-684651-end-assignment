@@ -1,6 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.GridPane?>
-<GridPane>
-
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<GridPane xmlns:fx="http://javafx.com/fxml/1" fx:id="lendingReceivingGridPane" maxHeight="375.0" maxWidth="935.0"
+          prefHeight="475.0" prefWidth="935.0"
+          style="-fx-background-color: #E5E5E5" stylesheets="@main-stylesheet.css"
+          xmlns="http://javafx.com/javafx/17.0.2-ea"
+          fx:controller="com.example.lukehuisman684651endassignment.LendingReceivingController">
+    <children>
+        <Label alignment="CENTER" text="Welcome [name of user]">
+            <font>
+                <Font size="32.0"/>
+            </font>
+            <GridPane.margin>
+                <Insets left="30.0" top="20.0"/>
+            </GridPane.margin>
+        </Label>
+        <Pane prefHeight="503.0" prefWidth="319.0" style="-fx-background-color: white" GridPane.rowIndex="1">
+            <GridPane.margin>
+                <Insets bottom="30.0" left="30.0" right="15.0" top="30.0"/>
+            </GridPane.margin>
+            <children>
+                <TextField fx:id="lendingItemCodeTextField" layoutX="35.0" layoutY="40.0" prefHeight="25.0"
+                           prefWidth="345.0" promptText="Item code"/>
+                <TextField fx:id="lendingMemberIdentifierTextField" layoutX="35.0" layoutY="90.0" prefHeight="25.0"
+                           prefWidth="345.0" promptText="Member identifier"/>
+                <Button layoutX="35.0" layoutY="140.0" mnemonicParsing="false" onMouseClicked="#lendingButtonClicked"
+                        prefHeight="25.0" prefWidth="110.0" text="Lend item"/>
+                <Label fx:id="lendingErrorLabel" layoutX="35.0" layoutY="190.0"/>
+                <Label fx:id="lendingCriteriaLabel" layoutX="35.0" layoutY="190.0" text=""/>
+            </children>
+        </Pane>
+        <Pane prefHeight="503.0" prefWidth="319.0" style="-fx-background-color: white" GridPane.columnIndex="1"
+              GridPane.rowIndex="1">
+            <GridPane.margin>
+                <Insets bottom="30.0" left="15.0" right="30.0" top="30.0"/>
+            </GridPane.margin>
+            <children>
+                <Button layoutX="35.0" layoutY="140.0" mnemonicParsing="false" onMouseClicked="#receivingButtonClicked"
+                        prefHeight="25.0" prefWidth="110.0" text="Receive item"/>
+                <TextField fx:id="receivingItemCodeTextField" layoutX="35.0" layoutY="40.0" prefHeight="25.0"
+                           prefWidth="345.0" promptText="Item code"/>
+                <Label fx:id="receivingErrorLabel" layoutX="35.0" layoutY="190.0"/>
+                <TextField fx:id="receivingMemberIdentifierTextField" layoutX="35.0" layoutY="90.0" prefHeight="25.0"
+                           prefWidth="345.0" promptText="Member identifier"/>
+                <Label fx:id="receivingCriteriaLabel" layoutX="35.0" layoutY="190.0" text=""/>
+            </children>
+        </Pane>
+    </children>
+    <rowConstraints>
+        <RowConstraints maxHeight="247.0" minHeight="52.0" prefHeight="123.0"/>
+        <RowConstraints maxHeight="423.0" minHeight="228.0" prefHeight="352.0"/>
+    </rowConstraints>
+    <columnConstraints>
+        <ColumnConstraints maxWidth="478.0" minWidth="324.0" prefWidth="478.0"/>
+        <ColumnConstraints maxWidth="611.0" minWidth="457.0" prefWidth="457.0"/>
+    </columnConstraints>
 </GridPane>
