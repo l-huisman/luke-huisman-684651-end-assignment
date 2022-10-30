@@ -1,84 +1,33 @@
-Book,1,The Player's Handbook,true,0,null,Gary Gygax
-Book,1,The Player's Handbook,true,0,null,Gary Gygax
-Book,1,The Player's Handbook,true,0,null,Gary Gygax
-Book,2,The Dungeon Master's Guide,true,0,null,Gary Gygax
-Book,2,The Dungeon Master's Guide,true,0,null,Gary Gygax
-Book,2,The Dungeon Master's Guide,true,0,null,Gary Gygax
-Book,3,The Monster Manual,true,0,null,Gary Gygax
-Book,3,The Monster Manual,true,0,null,Gary Gygax
-Book,3,The Monster Manual,true,0,null,Gary Gygax
-Book,4,Xanathar's Guide to Everything,true,0,null,Wizards of the Coast
-Book,4,Xanathar's Guide to Everything,true,0,null,Wizards of the Coast
-Book,4,Xanathar's Guide to Everything,true,0,null,Wizards of the Coast
-Book,5,Volo's Guide to Monsters,true,0,null,Wizards of the Coast
-Book,5,Volo's Guide to Monsters,true,0,null,Wizards of the Coast
-Book,5,Volo's Guide to Monsters,true,0,null,Wizards of the Coast
-Book,6,Tasha's Cauldron of Everything,true,0,null,Wizards of the Coast
-Book,6,Tasha's Cauldron of Everything,true,0,null,Wizards of the Coast
-Book,6,Tasha's Cauldron of Everything,true,0,null,Wizards of the Coast
-Book,7,Elemental Evil Player's Companion,true,0,null,Wizards of the Coast
-Book,7,Elemental Evil Player's Companion,true,0,null,Wizards of the Coast
-Book,7,Elemental Evil Player's Companion,true,0,null,Wizards of the Coast
-Book,8,Monsters of the Multiverse,true,0,null,Wizards of the Coast
-Book,8,Monsters of the Multiverse,true,0,null,Wizards of the Coast
-Book,8,Monsters of the Multiverse,true,0,null,Wizards of the Coast
-Book,9,The Tortle Package,true,0,null,Wizards of the Coast
-Book,9,The Tortle Package,true,0,null,Wizards of the Coast
-Book,9,The Tortle Package,true,0,null,Wizards of the Coast
-Book,10,Mordenkainen's Tome of Foes,true,0,null,Wizards of the Coast
-Book,10,Mordenkainen's Tome of Foes,true,0,null,Wizards of the Coast
-Book,10,Mordenkainen's Tome of Foes,true,0,null,Wizards of the Coast
-Book,11,Explorer's Guide to Wildemount,true,0,null,Wizards of the Coast
-Book,11,Explorer's Guide to Wildemount,true,0,null,Wizards of the Coast
-Book,11,Explorer's Guide to Wildemount,true,0,null,Wizards of the Coast
-Movie,12,The Lord of the Rings: The Fellowship of the Ring,true,0,null,Peter Jackson
-Movie,12,The Lord of the Rings: The Fellowship of the Ring,true,0,null,Peter Jackson
-Movie,12,The Lord of the Rings: The Fellowship of the Ring,true,0,null,Peter Jackson
-Movie,13,The Lord of the Rings: The Two Towers,true,0,null,Peter Jackson
-Movie,13,The Lord of the Rings: The Two Towers,true,0,null,Peter Jackson
-Movie,13,The Lord of the Rings: The Two Towers,true,0,null,Peter Jackson
-Movie,14,The Lord of the Rings: The Return of the King,true,0,null,Peter Jackson
-Movie,14,The Lord of the Rings: The Return of the King,true,0,null,Peter Jackson
-Movie,14,The Lord of the Rings: The Return of the King,true,0,null,Peter Jackson
-Movie,15,The Hobbit: An Unexpected Journey,true,0,null,Peter Jackson
-Movie,15,The Hobbit: An Unexpected Journey,true,0,null,Peter Jackson
-Movie,15,The Hobbit: An Unexpected Journey,true,0,null,Peter Jackson
-Movie,16,The Hobbit: The Desolation of Smaug,true,0,null,Peter Jackson
-Movie,16,The Hobbit: The Desolation of Smaug,true,0,null,Peter Jackson
-Movie,16,The Hobbit: The Desolation of Smaug,true,0,null,Peter Jackson
-Movie,17,The Hobbit: The Battle of the Five Armies,true,0,null,Peter Jackson
-Movie,17,The Hobbit: The Battle of the Five Armies,true,0,null,Peter Jackson
-Movie,17,The Hobbit: The Battle of the Five Armies,true,0,null,Peter Jackson
-Movie,18,Dungeons & Dragons,true,0,null,Courtney Solomon
-Movie,18,Dungeons & Dragons,true,0,null,Courtney Solomon
-Movie,18,Dungeons & Dragons,true,0,null,Courtney Solomon
-Movie,19,Star Wars: Episode I - The Phantom Menace,true,0,null,George Lucas
-Movie,19,Star Wars: Episode I - The Phantom Menace,true,0,null,George Lucas
-Movie,19,Star Wars: Episode I - The Phantom Menace,true,0,null,George Lucas
-Movie,20,Star Wars: Episode II - Attack of the Clones,true,0,null,George Lucas
-Movie,20,Star Wars: Episode II - Attack of the Clones,true,0,null,George Lucas
-Movie,20,Star Wars: Episode II - Attack of the Clones,true,0,null,George Lucas
-Movie,21,Star Wars: Episode III - Revenge of the Sith,true,0,null,George Lucas
-Movie,21,Star Wars: Episode III - Revenge of the Sith,true,0,null,George Lucas
-Movie,21,Star Wars: Episode III - Revenge of the Sith,true,0,null,George Lucas
-Movie,22,Star Wars: Episode IV - A New Hope,true,0,null,George Lucas
-Movie,22,Star Wars: Episode IV - A New Hope,true,0,null,George Lucas
-Movie,22,Star Wars: Episode IV - A New Hope,true,0,null,George Lucas
-Movie,23,Star Wars: Episode V - The Empire Strikes Back,true,0,null,George Lucas
-Movie,23,Star Wars: Episode V - The Empire Strikes Back,true,0,null,George Lucas
-Movie,23,Star Wars: Episode V - The Empire Strikes Back,true,0,null,George Lucas
-Movie,24,Star Wars: Episode VI - Return of the Jedi,true,0,null,George Lucas
-Movie,24,Star Wars: Episode VI - Return of the Jedi,true,0,null,George Lucas
-Movie,24,Star Wars: Episode VI - Return of the Jedi,true,0,null,George Lucas
-Book,25,Harry Potter and the Sorcerer's Stone,true,0,null,J.K. Rowling
-Book,25,Harry Potter and the Sorcerer's Stone,true,0,null,J.K. Rowling
-Book,26,Harry Potter and the Chamber of Secrets,true,0,null,J.K. Rowling
-Book,26,Harry Potter and the Chamber of Secrets,true,0,null,J.K. Rowling
-Book,27,Harry Potter and the Prisoner of Azkaban,true,0,null,J.K. Rowling
-Book,27,Harry Potter and the Prisoner of Azkaban,true,0,null,J.K. Rowling
-Movie,28,Harry Potter and the Sorcerer's Stone,true,0,null,Chris Columbus
-Movie,28,Harry Potter and the Sorcerer's Stone,true,0,null,Chris Columbus
-Movie,29,Harry Potter and the Chamber of Secrets,true,0,null,Chris Columbus
-Movie,29,Harry Potter and the Chamber of Secrets,true,0,null,Chris Columbus
-Movie,30,Harry Potter and the Prisoner of Azkaban,true,0,null,Alfonso Cuarón
-Movie,30,Harry Potter and the Prisoner of Azkaban,true,0,null,Alfonso Cuarón
+1,The Player's Handbook,true,0,null,Gary Gygax
+1,The Player's Handbook,true,0,null,Gary Gygax
+1,The Player's Handbook,true,0,null,Gary Gygax
+2,The Dungeon Master's Guide,true,0,null,Gary Gygax
+2,The Dungeon Master's Guide,true,0,null,Gary Gygax
+2,The Dungeon Master's Guide,true,0,null,Gary Gygax
+3,The Monster Manual,true,0,null,Gary Gygax
+3,The Monster Manual,true,0,null,Gary Gygax
+3,The Monster Manual,true,0,null,Gary Gygax
+4,Xanathar's Guide to Everything,true,0,null,Wizards of the Coast
+4,Xanathar's Guide to Everything,true,0,null,Wizards of the Coast
+4,Xanathar's Guide to Everything,true,0,null,Wizards of the Coast
+5,Volo's Guide to Monsters,true,0,null,Wizards of the Coast
+5,Volo's Guide to Monsters,true,0,null,Wizards of the Coast
+5,Volo's Guide to Monsters,true,0,null,Wizards of the Coast
+6,Tasha's Cauldron of Everything,true,0,null,Wizards of the Coast
+6,Tasha's Cauldron of Everything,true,0,null,Wizards of the Coast
+6,Tasha's Cauldron of Everything,true,0,null,Wizards of the Coast
+7,Elemental Evil Player's Companion,true,0,null,Wizards of the Coast
+7,Elemental Evil Player's Companion,true,0,null,Wizards of the Coast
+7,Elemental Evil Player's Companion,true,0,null,Wizards of the Coast
+8,Monsters of the Multiverse,true,0,null,Wizards of the Coast
+8,Monsters of the Multiverse,true,0,null,Wizards of the Coast
+8,Monsters of the Multiverse,true,0,null,Wizards of the Coast
+9,The Tortle Package,true,0,null,Wizards of the Coast
+9,The Tortle Package,true,0,null,Wizards of the Coast
+9,The Tortle Package,true,0,null,Wizards of the Coast
+10,Mordenkainen's Tome of Foes,true,0,null,Wizards of the Coast
+10,Mordenkainen's Tome of Foes,true,0,null,Wizards of the Coast
+10,Mordenkainen's Tome of Foes,true,0,null,Wizards of the Coast
+11,Explorer's Guide to Wildemount,true,0,null,Wizards of the Coast
+11,Explorer's Guide to Wildemount,true,0,null,Wizards of the Coast
+11,Explorer's Guide to Wildemount,true,0,null,Wizards of the Coast

@@ -1,10 +1,14 @@
 package com.example.lukehuisman684651endassignment;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-public class LendingReceivingController extends BaseController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class LendingReceivingController extends BaseController implements Initializable {
     // Regex expression in the code is from https://stackoverflow.com/questions/3802192/regexp-java-for-numbers by user https://stackoverflow.com/users/18771/tomalak
     private static final String NUMBERSREGEX = "[0-9]+";
     @FXML
@@ -25,6 +29,11 @@ public class LendingReceivingController extends BaseController {
     private Label receivingCriteriaLabel;
     private LibraryService libraryService = new LibraryService();
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources)
+    {
+
+    }
 
     @FXML
     private void lendingButtonClicked() {

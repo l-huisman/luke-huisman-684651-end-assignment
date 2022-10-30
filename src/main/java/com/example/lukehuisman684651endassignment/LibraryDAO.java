@@ -14,8 +14,8 @@ public class LibraryDAO {
     private static final String LIBRARYITEMSFILEPATH = "src/main/resources/libraryitems.txt";
 
     // 1: Check if the itemCode is the same
-    private static boolean hasEqualItemCode(LibraryItem libraryItem, String[] attributes) {
-        return libraryItem.getItemCode() == Integer.parseInt(attributes[1]);
+    private static boolean hasEqualItemCode(LibraryItem libraryItem, String attribute) {
+        return libraryItem.getItemCode() == Integer.parseInt(attribute);
     }
 
     // 3: Check if the availability is different, so we don't overwrite someone else's reservation
@@ -33,10 +33,7 @@ public class LibraryDAO {
             String line = br.readLine();
             while (line != null) {
                 String[] attributes = line.split(",");
-                if (attributes[0].equals("Book"))
-                    libraryItems.add(createBook(attributes));
-                else
-                    libraryItems.add(createMovie(attributes));
+                libraryItems.add(createLibraryItem(attributes));
                 line = br.readLine();
             }
             br.close();
@@ -46,12 +43,10 @@ public class LibraryDAO {
         return libraryItems;
     }
 
-    private LibraryItem createMovie(String[] attributes) {
-        return new Movie(Integer.parseInt(attributes[1]), attributes[2], Boolean.parseBoolean(attributes[3]), Integer.parseInt(attributes[4]), ifNullSetDateNow(attributes[5]), attributes[6]);
-    }
-
-    private LibraryItem createBook(String[] attributes) {
-        return new Book(Integer.parseInt(attributes[1]), attributes[2], Boolean.parseBoolean(attributes[3]), Integer.parseInt(attributes[4]), ifNullSetDateNow(attributes[5]), attributes[6]);
+    private LibraryItem createLibraryItem(String[] attributes)
+    {
+        // Attributes 0: itemCode, 1:title, 2:availability, 3:memberIdentifier, 4:dateLent, 5:author
+        return new LibraryItem(Integer.parseInt(attributes[0]), attributes[1], Boolean.parseBoolean(attributes[2]), Integer.parseInt(attributes[3]), ifNullSetDateNow(attributes[4]), attributes[5]);
     }
 
     private LocalDate ifNullSetDateNow(String attribute) {
@@ -74,20 +69,20 @@ public class LibraryDAO {
             Scanner x = new Scanner(new File(LIBRARYITEMSFILEPATH));
             x.useDelimiter("[,\n]");
             while (x.hasNext()) {
-                for (int i = 0; i < 7; i++) {
+                for (int i = 0; i < 6; i++) {
                     attributes[i] = x.next();
                 }
                 // Check for 3 parameters before changing the record to avoid changing the wrong record in the file
                 // 1: Check if the itemCode is the same
                 // 2: Check if a record during this while loop hasn't been changed yet
                 // 3: Check if the availability is different, so we don't overwrite someone else's reservation
-                if (hasEqualItemCode(libraryItem, attributes) && !recordChanged && compareAvailability(libraryItem, attributes)) {
-                    pw.print(attributes[0] + "," + attributes[1] + "," + attributes[2] + "," + libraryItem.getAvailability() + "," + libraryItem.getMemberIdentifier() + "," + libraryItem.getDateLent() + "," + attributes[6] + "\n");
+                if (hasEqualItemCode(libraryItem, attributes[0]) && !recordChanged && compareAvailability(libraryItem, attributes)) {
+                    pw.print(libraryItem.getItemCode() + "," + libraryItem.getTitle() + "," + libraryItem.getAvailability() + "," + libraryItem.getMemberIdentifier() + "," + libraryItem.getDateLent() + "," + libraryItem.getAuthor() + "\n");
                     recordChanged = true;
                     continue;
                 }
-                pw.print(attributes[0] + "," + attributes[1] + "," + attributes[2] + "," + attributes[3] + "," + attributes[4] + "," + attributes[5] + "," + attributes[6] + "\n");
-                // Attributes are as followed: 0 = type, 1 = itemCode, 2 = title, 3 = availability, 4 = memberIdentifier, 5 = dateLent, 6 = author/director
+                pw.print(attributes[0] + "," + attributes[1] + "," + attributes[2] + "," + attributes[3] + "," + attributes[4] + "," + attributes[5] + "\n");
+                // Attributes are as followed: 0: itemCode, 1:title, 2:availability, 3:memberIdentifier, 4:dateLent, 5:author
             }
             x.close();
             pw.flush();

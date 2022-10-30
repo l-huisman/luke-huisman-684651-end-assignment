@@ -2,6 +2,7 @@ package com.example.lukehuisman684651endassignment;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -16,7 +17,7 @@ public class CollectionController extends BaseController implements Initializabl
     @FXML
     private TableColumn<LibraryItem, String> itemCodeColumn;
     @FXML
-    private TableColumn<LibraryItem, String> availableColumn;
+    private TableColumn<LibraryItem, Boolean> availableColumn;
     @FXML
     private TableColumn<LibraryItem, String> titleColumn;
     @FXML
@@ -26,6 +27,22 @@ public class CollectionController extends BaseController implements Initializabl
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         initializeTableView();
+        initializeListeners();
+    }
+
+    private void initializeListeners() {
+        availableColumn.setCellFactory(column -> new TableCell<LibraryItem, Boolean>() {
+            @Override
+            protected void updateItem(Boolean item, boolean empty) {
+                super.updateItem(item, empty);
+                if (item == null || empty) {
+                    setText(null);
+                    setStyle("");
+                } else {
+                    setText(Boolean.TRUE.equals(item) ? "Yes" : "No");
+                }
+            }
+        });
     }
 
     private void initializeTableView() {
@@ -34,10 +51,7 @@ public class CollectionController extends BaseController implements Initializabl
         itemCodeColumn.setCellValueFactory(new PropertyValueFactory<>("itemCode"));
         availableColumn.setCellValueFactory(new PropertyValueFactory<>("availability"));
         titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
-        if (libraryItems.get(0) instanceof Book)
-            authorDirectorColumn.setCellValueFactory(new PropertyValueFactory<>("author"));
-        else
-            authorDirectorColumn.setCellValueFactory(new PropertyValueFactory<>("director"));
+        authorDirectorColumn.setCellValueFactory(new PropertyValueFactory<>("author"));
         libraryItemsTable.getItems().addAll(libraryItems);
     }
 
