@@ -1,6 +1,7 @@
 package com.example.lukehuisman684651endassignment;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class LibraryService {
     LibraryDAO libraryDAO = new LibraryDAO();
@@ -9,7 +10,7 @@ public class LibraryService {
         // This method checks if the item is available to lend and then lends it to the member
         LibraryItem libraryItem = libraryDAO.getAvailableLibraryItem(itemCode);
         if (libraryItem != null) {
-            libraryItem.setLent(true);
+            libraryItem.setAvailability(false);
             libraryItem.setMemberIdentifier(memberIdentifier);
             libraryItem.setDateLent(LocalDate.now());
             libraryDAO.editLibraryItemInFile(libraryItem);
@@ -28,7 +29,7 @@ public class LibraryService {
                 message = "Item is (" + daysTooLate + ") days too late!";
             else
                 message = "Item is received!";
-            libraryItem.setLent(false);
+            libraryItem.setAvailability(true);
             libraryItem.setMemberIdentifier(0);
             libraryItem.setDateLent(null);
             libraryDAO.editLibraryItemInFile(libraryItem);
@@ -41,5 +42,9 @@ public class LibraryService {
         if (libraryItem.getDateLent().plusDays(21).isBefore(LocalDate.now()))
             daysTooLate = LocalDate.now().getDayOfYear() - libraryItem.getDateLent().plusDays(21).getDayOfYear();
         return daysTooLate;
+    }
+
+    public List<LibraryItem> getLibraryItems() {
+        return libraryDAO.getLibraryItems();
     }
 }

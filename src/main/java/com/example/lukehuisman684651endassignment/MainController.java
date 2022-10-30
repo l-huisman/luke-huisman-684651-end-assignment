@@ -1,14 +1,9 @@
 package com.example.lukehuisman684651endassignment;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
 import javafx.scene.layout.GridPane;
 
 import java.net.URL;
@@ -37,8 +32,7 @@ public class MainController extends BaseController implements Initializable {
     }
 
     @FXML
-    public void onCloseButtonClick(Event event)
-    {
+    public void onCloseButtonClick(Event event) {
         closeProgram(event);
     }
 

@@ -14,7 +14,7 @@ public class LibraryDAO {
     private static final String LIBRARYITEMSFILEPATH = "src/main/resources/libraryitems.txt";
 
     // Method to get all library items from a csv file contain both movies and books
-    public List<LibraryItem> getAllLibraryItems() {
+    public List<LibraryItem> getLibraryItems() {
         List<LibraryItem> libraryItems = new ArrayList<>();
         Path pathToFile = Paths.get(LIBRARYITEMSFILEPATH);
 
@@ -25,7 +25,7 @@ public class LibraryDAO {
                 String[] attributes = line.split(",");
                 if (attributes[0].equals("Book"))
                     libraryItems.add(createBook(attributes));
-                if (attributes[0].equals("Movie"))
+                else
                     libraryItems.add(createMovie(attributes));
                 line = br.readLine();
             }
@@ -56,45 +56,28 @@ public class LibraryDAO {
         String tempFile = "src/main/resources/temp.txt";
         File oldFile = new File(LIBRARYITEMSFILEPATH);
         File newFile = new File(tempFile);
-        String itemType = "";
-        String itemCode = "";
-        String title = "";
-        String isLent = "";
-        String memberIdentifier = "";
-        String dateLent = "";
-        String author = "";
-        String director = "";
-
+        String[] attributes = new String[7];
         try {
             FileWriter fw = new FileWriter(tempFile, true);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter pw = new PrintWriter(bw);
             Scanner x = new Scanner(new File(LIBRARYITEMSFILEPATH));
             x.useDelimiter("[,\n]");
-
             while (x.hasNext()) {
-                itemType = x.next();
-                itemCode = x.next();
-                title = x.next();
-                isLent = x.next();
-                memberIdentifier = x.next();
-                dateLent = x.next();
-                if (itemType.equals("Book"))
-                    author = x.next();
-                if (itemType.equals("Movie"))
-                    director = x.next();
-                if (itemCode.equals(String.valueOf(libraryItem.getItemCode())) && !recordChanged && !Objects.equals(libraryItem.isLent(), Boolean.parseBoolean(isLent))) {
-                    if (itemType.equals("Book"))
-                        pw.print(itemType + "," + itemCode + "," + title + "," + libraryItem.isLent() + "," + libraryItem.getMemberIdentifier() + "," + libraryItem.getDateLent() + "," + author + "\n");
-                    if (itemType.equals("Movie"))
-                        pw.print(itemType + "," + itemCode + "," + title + "," + libraryItem.isLent() + "," + libraryItem.getMemberIdentifier() + "," + libraryItem.getDateLent() + "," + director + "\n");
+                for (int i = 0; i < 7; i++) {
+                    attributes[i] = x.next();
+                }
+                // Check for 3 parameters before changing the record to avoid changing the wrong record in the file
+                // 1: Check if the itemCode is the same
+                // 2: Check if a record during this while loop hasn't been changed yet
+                // 3: Check if the availability is different, so we don't overwrite someone else's reservation
+                if (hasEqualItemCode(libraryItem, attributes) && !recordChanged && compareAvailability(libraryItem, attributes)) {
+                    pw.print(attributes[0] + "," + attributes[1] + "," + attributes[2] + "," + libraryItem.getAvailability() + "," + libraryItem.getMemberIdentifier() + "," + libraryItem.getDateLent() + "," + attributes[6] + "\n");
                     recordChanged = true;
                     continue;
                 }
-                if (itemType.equals("Book"))
-                    pw.print(itemType + "," + itemCode + "," + title + "," + isLent + "," + memberIdentifier + "," + dateLent + "," + author + "\n");
-                if (itemType.equals("Movie"))
-                    pw.print(itemType + "," + itemCode + "," + title + "," + isLent + "," + memberIdentifier + "," + dateLent + "," + director + "\n");
+                pw.print(attributes[0] + "," + attributes[1] + "," + attributes[2] + "," + attributes[3] + "," + attributes[4] + "," + attributes[5] + "," + attributes[6] + "\n");
+                // Attributes are as followed: 0 = type, 1 = itemCode, 2 = title, 3 = availability, 4 = memberIdentifier, 5 = dateLent, 6 = author/director
             }
             x.close();
             pw.flush();
@@ -106,19 +89,28 @@ public class LibraryDAO {
         }
     }
 
+    // 1: Check if the itemCode is the same
+    private static boolean hasEqualItemCode(LibraryItem libraryItem, String[] attributes) {
+        return libraryItem.getItemCode() == Integer.parseInt(attributes[1]);
+    }
+    // 3: Check if the availability is different, so we don't overwrite someone else's reservation
+    private static boolean compareAvailability(LibraryItem libraryItem, String[] attributes) {
+        return !Objects.equals(libraryItem.getAvailability(), Boolean.parseBoolean(attributes[3]));
+    }
+
     public LibraryItem getAvailableLibraryItem(int itemCode) {
-        List<LibraryItem> libraryItems = getAllLibraryItems();
+        List<LibraryItem> libraryItems = getLibraryItems();
         for (LibraryItem libraryItem : libraryItems) {
-            if (libraryItem.getItemCode() == itemCode && !libraryItem.isLent())
+            if (libraryItem.getItemCode() == itemCode && libraryItem.getAvailability())
                 return libraryItem;
         }
         return null;
     }
 
     public LibraryItem getLentLibraryItem(int itemCode, int memberIdentifier) {
-        List<LibraryItem> libraryItems = getAllLibraryItems();
+        List<LibraryItem> libraryItems = getLibraryItems();
         for (LibraryItem libraryItem : libraryItems) {
-            if (libraryItem.getItemCode() == itemCode && libraryItem.isLent() && libraryItem.getMemberIdentifier() == memberIdentifier)
+            if (libraryItem.getItemCode() == itemCode && !libraryItem.getAvailability() && libraryItem.getMemberIdentifier() == memberIdentifier)
                 return libraryItem;
         }
         return null;

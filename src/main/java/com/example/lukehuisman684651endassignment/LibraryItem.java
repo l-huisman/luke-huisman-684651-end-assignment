@@ -5,14 +5,14 @@ import java.time.LocalDate;
 public abstract class LibraryItem {
     private int itemCode;
     private String title;
-    private boolean isLent;
+    private boolean availability;
     private int memberIdentifier;
     private LocalDate dateLent;
 
-    protected LibraryItem(int itemCode, String title, boolean isLent, int memberIdentifier, LocalDate dateLent) {
+    protected LibraryItem(int itemCode, String title, boolean availability, int memberIdentifier, LocalDate dateLent) {
         this.itemCode = itemCode;
         this.title = title;
-        this.isLent = isLent;
+        this.availability = availability;
         this.memberIdentifier = memberIdentifier;
         this.dateLent = dateLent;
     }
@@ -25,12 +25,12 @@ public abstract class LibraryItem {
         return title;
     }
 
-    public boolean isLent() {
-        return isLent;
+    public boolean getAvailability() {
+        return availability;
     }
 
-    public void setLent(boolean isLent) {
-        this.isLent = isLent;
+    public void setAvailability(boolean isLent) {
+        this.availability = isLent;
     }
 
     public int getMemberIdentifier() {
