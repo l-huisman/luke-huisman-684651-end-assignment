@@ -12,7 +12,6 @@ public class LibraryService {
         if (libraryItem != null) {
             libraryItem.setAvailability(false);
             libraryItem.setMemberIdentifier(memberIdentifier);
-            libraryItem.setDateLent(LocalDate.now());
             libraryDAO.editLibraryItemInFile(libraryItem);
             return "Item is lent";
         }

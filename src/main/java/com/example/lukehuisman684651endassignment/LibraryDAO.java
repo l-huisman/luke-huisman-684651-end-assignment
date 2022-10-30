@@ -11,7 +11,7 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class LibraryDAO {
-    private static final String LIBRARYITEMSFILEPATH = "src/main/resources/libraryitems.txt";
+    private static final String LIBRARYITEMSFILEPATH = "src/main/resources/libraryitems.dataset";
 
     // 1: Check if the itemCode is the same
     private static boolean hasEqualItemCode(LibraryItem libraryItem, String attribute) {
@@ -19,8 +19,8 @@ public class LibraryDAO {
     }
 
     // 3: Check if the availability is different, so we don't overwrite someone else's reservation
-    private static boolean compareAvailability(LibraryItem libraryItem, String[] attributes) {
-        return !Objects.equals(libraryItem.getAvailability(), Boolean.parseBoolean(attributes[3]));
+    private static boolean compareAvailability(LibraryItem libraryItem, String attribute) {
+        return !Objects.equals(libraryItem.getAvailability(), Boolean.parseBoolean(attribute));
     }
 
     // Method to get all library items from a csv file contain both movies and books
@@ -58,10 +58,10 @@ public class LibraryDAO {
     // Code to update the txt file containing all movies found here https://www.youtube.com/watch?v=TpyRKom0X_s
     public void editLibraryItemInFile(LibraryItem libraryItem) {
         boolean recordChanged = false;
-        String tempFile = "src/main/resources/temp.txt";
+        String tempFile = "src/main/resources/temp.dataset";
         File oldFile = new File(LIBRARYITEMSFILEPATH);
         File newFile = new File(tempFile);
-        String[] attributes = new String[7];
+        String[] attributes = new String[6];
         try {
             FileWriter fw = new FileWriter(tempFile, true);
             BufferedWriter bw = new BufferedWriter(fw);
@@ -76,7 +76,7 @@ public class LibraryDAO {
                 // 1: Check if the itemCode is the same
                 // 2: Check if a record during this while loop hasn't been changed yet
                 // 3: Check if the availability is different, so we don't overwrite someone else's reservation
-                if (hasEqualItemCode(libraryItem, attributes[0]) && !recordChanged && compareAvailability(libraryItem, attributes)) {
+                if (hasEqualItemCode(libraryItem, attributes[0]) && !recordChanged && compareAvailability(libraryItem, attributes[2])) {
                     pw.print(libraryItem.getItemCode() + "," + libraryItem.getTitle() + "," + libraryItem.getAvailability() + "," + libraryItem.getMemberIdentifier() + "," + libraryItem.getDateLent() + "," + libraryItem.getAuthor() + "\n");
                     recordChanged = true;
                     continue;

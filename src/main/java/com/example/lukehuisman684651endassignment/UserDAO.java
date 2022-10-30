@@ -10,7 +10,7 @@ import java.util.List;
 
 public class UserDAO {
 
-    private static final String USERSFILEPATH = "src/main/resources/users.txt";
+    private static final String USERSFILEPATH = "src/main/resources/users.dataset";
 
     public User checkCredentialsOfEmployee(int userID, String password) {
         List<User> users = getUsers();

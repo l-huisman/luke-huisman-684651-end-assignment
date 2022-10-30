@@ -1,2 +1,0 @@
-1,Luke,Huisman,Password,2003-04-06,EMPLOYEE
-2,Luka,Otte,Password,2002-11-10,CUSTOMER
