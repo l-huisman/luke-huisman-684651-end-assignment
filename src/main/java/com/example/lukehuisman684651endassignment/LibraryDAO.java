@@ -26,8 +26,9 @@ public class LibraryDAO {
     // Method to get all library items from a csv file contain both movies and books
     public List<LibraryItem> getLibraryItems() {
         List<LibraryItem> libraryItems = new ArrayList<>();
+        if (!fileExists())
+            createNewFile();
         Path pathToFile = Paths.get(LIBRARYITEMSFILEPATH);
-
         try {
             BufferedReader br = new BufferedReader(new FileReader(pathToFile.toFile()));
             String line = br.readLine();
@@ -43,6 +44,14 @@ public class LibraryDAO {
         return libraryItems;
     }
 
+    private void createNewFile() {
+        try {
+            Files.createFile(Paths.get(LIBRARYITEMSFILEPATH));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     private LibraryItem createLibraryItem(String[] attributes)
     {
         // Attributes 0: itemCode, 1:title, 2:availability, 3:memberIdentifier, 4:dateLent, 5:author
@@ -55,7 +64,7 @@ public class LibraryDAO {
         return LocalDate.parse(attribute);
     }
 
-    // Code to update the txt file containing all movies found here https://www.youtube.com/watch?v=TpyRKom0X_s
+    // Code to update the txt file containing all libraryItems found here https://www.youtube.com/watch?v=TpyRKom0X_s
     public void editLibraryItemInFile(LibraryItem libraryItem) {
         boolean recordChanged = false;
         String tempFile = "src/main/resources/temp.dataset";
@@ -110,5 +119,9 @@ public class LibraryDAO {
                 return libraryItem;
         }
         return null;
+    }
+    private boolean fileExists()
+    {
+        return Path.of(LIBRARYITEMSFILEPATH).toFile().exists();
     }
 }
