@@ -5,12 +5,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class MembersController implements Initializable {
+public class MembersController extends BaseController implements Initializable {
 
+    UserService userService = new UserService();
     @FXML
     private TableView<User> membersTable;
     @FXML
@@ -24,15 +26,12 @@ public class MembersController implements Initializable {
     @FXML
     private TableColumn<User, String> roleColumn;
 
-    UserService userService = new UserService();
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         initializeTableView();
     }
 
-    private void initializeTableView()
-    {
+    private void initializeTableView() {
         userIDColumn.setCellValueFactory(new PropertyValueFactory<>("userID"));
         firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
@@ -43,8 +42,8 @@ public class MembersController implements Initializable {
     }
 
     @FXML
-    public void addMemberButtonClicked() {
-        //TODO
+    public void addMemberButtonClicked(MouseEvent event) {
+        switchStageWithoutController("crud-member-view.fxml", event);
     }
 
     @FXML

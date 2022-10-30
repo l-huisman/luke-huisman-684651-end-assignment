@@ -40,9 +40,25 @@ public class BaseController {
         return root;
     }
 
+    // Everything the same but without a controller
+    protected void switchStageWithoutController(String fxmlFileName, Event event) {
+        Scene scene = loadSceneWithoutController(fxmlFileName);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+        stage.centerOnScreen();
+        event.consume();
+    }
+
+    private Scene loadSceneWithoutController(String fxmlFileName) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFileName));
+        return new Scene(tryLoading(loader));
+    }
+
     // Method to close the Program
     protected void closeProgram(Event event) {
         ((Node) event.getSource()).getScene().getWindow().hide();
         event.consume();
     }
+
 }

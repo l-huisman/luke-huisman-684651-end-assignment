@@ -13,6 +13,16 @@ import java.util.Scanner;
 public class LibraryDAO {
     private static final String LIBRARYITEMSFILEPATH = "src/main/resources/libraryitems.txt";
 
+    // 1: Check if the itemCode is the same
+    private static boolean hasEqualItemCode(LibraryItem libraryItem, String[] attributes) {
+        return libraryItem.getItemCode() == Integer.parseInt(attributes[1]);
+    }
+
+    // 3: Check if the availability is different, so we don't overwrite someone else's reservation
+    private static boolean compareAvailability(LibraryItem libraryItem, String[] attributes) {
+        return !Objects.equals(libraryItem.getAvailability(), Boolean.parseBoolean(attributes[3]));
+    }
+
     // Method to get all library items from a csv file contain both movies and books
     public List<LibraryItem> getLibraryItems() {
         List<LibraryItem> libraryItems = new ArrayList<>();
@@ -87,15 +97,6 @@ public class LibraryDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    // 1: Check if the itemCode is the same
-    private static boolean hasEqualItemCode(LibraryItem libraryItem, String[] attributes) {
-        return libraryItem.getItemCode() == Integer.parseInt(attributes[1]);
-    }
-    // 3: Check if the availability is different, so we don't overwrite someone else's reservation
-    private static boolean compareAvailability(LibraryItem libraryItem, String[] attributes) {
-        return !Objects.equals(libraryItem.getAvailability(), Boolean.parseBoolean(attributes[3]));
     }
 
     public LibraryItem getAvailableLibraryItem(int itemCode) {

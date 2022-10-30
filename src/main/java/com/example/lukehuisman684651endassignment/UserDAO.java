@@ -43,4 +43,8 @@ public class UserDAO {
         // Attributes: 0: userID, 1: firstName, 2: lastName, 3: password, 4: birthDate, 5: role
         return new User(Integer.parseInt(attributes[0]), attributes[1], attributes[2], attributes[3], LocalDate.parse(attributes[4]), Role.valueOf(attributes[5]));
     }
+
+    public void addUser(User user) {
+
+    }
 }

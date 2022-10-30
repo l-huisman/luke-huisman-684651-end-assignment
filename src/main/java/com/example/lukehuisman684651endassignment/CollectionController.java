@@ -10,17 +10,17 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class CollectionController implements Initializable {
+public class CollectionController extends BaseController implements Initializable {
     @FXML
     private TableView<LibraryItem> libraryItemsTable;
     @FXML
     private TableColumn<LibraryItem, String> itemCodeColumn;
     @FXML
-    private TableColumn<LibraryItem, String>  availableColumn;
+    private TableColumn<LibraryItem, String> availableColumn;
     @FXML
-    private TableColumn<LibraryItem, String>  titleColumn;
+    private TableColumn<LibraryItem, String> titleColumn;
     @FXML
-    private TableColumn<LibraryItem, String>  authorDirectorColumn;
+    private TableColumn<LibraryItem, String> authorDirectorColumn;
     private LibraryService libraryService = new LibraryService();
 
     @Override

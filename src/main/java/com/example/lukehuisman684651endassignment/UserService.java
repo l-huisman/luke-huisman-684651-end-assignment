@@ -9,8 +9,11 @@ public class UserService {
         return userDAO.checkCredentialsOfEmployee(userID, password);
     }
 
-    public List<User> getUsers()
-    {
+    public List<User> getUsers() {
         return userDAO.getUsers();
+    }
+
+    public void addUser(User user) {
+        userDAO.addUser(user);
     }
 }

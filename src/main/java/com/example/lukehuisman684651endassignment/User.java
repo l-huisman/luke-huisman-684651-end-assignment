@@ -19,6 +19,9 @@ public class User {
         this.role = role;
     }
 
+    public User() {
+    }
+
     public int getUserID() {
         return userID;
     }
@@ -46,6 +49,7 @@ public class User {
     public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
+
     public String getPassword() {
         return password;
     }

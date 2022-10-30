@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-public class LendingReceivingController {
+public class LendingReceivingController extends BaseController {
     // Regex expression in the code is from https://stackoverflow.com/questions/3802192/regexp-java-for-numbers by user https://stackoverflow.com/users/18771/tomalak
     private static final String NUMBERSREGEX = "[0-9]+";
     @FXML
