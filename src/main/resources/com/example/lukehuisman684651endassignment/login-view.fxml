@@ -24,7 +24,7 @@
         </GridPane.margin>
     </Label>
     <TextField fx:id="usernameField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="27.0" prefWidth="271.0"
-               promptText="Username" GridPane.rowIndex="1">
+               promptText="userID" GridPane.rowIndex="1">
         <GridPane.margin>
             <Insets left="30.0"/>
         </GridPane.margin>
