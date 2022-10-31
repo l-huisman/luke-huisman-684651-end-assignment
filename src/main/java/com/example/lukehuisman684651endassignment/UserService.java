@@ -31,8 +31,7 @@ public class UserService {
         return lastName.replace(" ", "");
     }
 
-    public void deleteUser(User user)
-    {
+    public void deleteUser(User user) {
         userDAO.deleteUser(user);
     }
 }

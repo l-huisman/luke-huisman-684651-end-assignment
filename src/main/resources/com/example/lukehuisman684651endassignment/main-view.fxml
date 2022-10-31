@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-
-<GridPane fx:id="mainStageGridPane" prefHeight="475.0" prefWidth="932.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<?import javafx.scene.text.Font?>
+<GridPane xmlns:fx="http://javafx.com/fxml/1" fx:id="mainStageGridPane" prefHeight="475.0" prefWidth="932.0"
+          xmlns="http://javafx.com/javafx/17.0.2-ea">
     <columnConstraints>
-        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
     </columnConstraints>
     <rowConstraints>
-        <RowConstraints maxHeight="283.0" minHeight="10.0" prefHeight="66.0" vgrow="SOMETIMES" />
-        <RowConstraints maxHeight="504.0" minHeight="10.0" prefHeight="409.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="283.0" minHeight="10.0" prefHeight="66.0" vgrow="SOMETIMES"/>
+        <RowConstraints maxHeight="504.0" minHeight="10.0" prefHeight="409.0" vgrow="SOMETIMES"/>
     </rowConstraints>
     <children>
-        <TabPane fx:id="mainStageTabPane" prefHeight="456.0" prefWidth="932.0" tabClosingPolicy="UNAVAILABLE" GridPane.rowIndex="1">
+        <TabPane fx:id="mainStageTabPane" prefHeight="456.0" prefWidth="932.0" tabClosingPolicy="UNAVAILABLE"
+                 GridPane.rowIndex="1">
             <tabs>
                 <Tab fx:id="lendingReceivingTab" text="Lending/Receiving">
                     <!--                    <fx:include source="lending-receiving-view.fxml"/>-->
@@ -29,18 +30,19 @@
         </TabPane>
         <Label text="Library System">
             <font>
-                <Font size="32.0" />
-            </font>
-         <GridPane.margin>
-            <Insets left="30.0" />
-         </GridPane.margin>
-        </Label>
-        <Button fx:id="closeButton" mnemonicParsing="false" onMouseClicked="#onCloseButtonClick" prefHeight="35.0" prefWidth="35.0" stylesheets="@login-stylesheet.css" text="X" textAlignment="CENTER">
-            <font>
-                <Font size="16.0" />
+                <Font size="32.0"/>
             </font>
             <GridPane.margin>
-                <Insets bottom="35.0" left="900.0" />
+                <Insets left="30.0"/>
+            </GridPane.margin>
+        </Label>
+        <Button fx:id="closeButton" mnemonicParsing="false" onMouseClicked="#onCloseButtonClick" prefHeight="35.0"
+                prefWidth="35.0" stylesheets="@login-stylesheet.css" text="X" textAlignment="CENTER">
+            <font>
+                <Font size="16.0"/>
+            </font>
+            <GridPane.margin>
+                <Insets bottom="35.0" left="900.0"/>
             </GridPane.margin>
         </Button>
     </children>

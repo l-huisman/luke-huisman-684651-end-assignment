@@ -1,12 +1,9 @@
 package com.example.lukehuisman684651endassignment;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
-import javafx.util.Duration;
 
 import java.net.URL;
 import java.time.LocalDate;
@@ -15,6 +12,7 @@ import java.util.ResourceBundle;
 public class CRUDMemberViewController extends BaseController implements Initializable {
 
     UserService userService = new UserService();
+    boolean existingUserEdited = false;
     @FXML
     private Label userIDLabel;
     @FXML
@@ -32,7 +30,6 @@ public class CRUDMemberViewController extends BaseController implements Initiali
     @FXML
     private Label errorLabel;
     private User user;
-    boolean existingUserEdited = false;
 
     public CRUDMemberViewController() {
     }
@@ -43,15 +40,13 @@ public class CRUDMemberViewController extends BaseController implements Initiali
 
     }
 
-    private void initializeChoiceBox()
-    {
+    private void initializeChoiceBox() {
         roleChoiceBox.getItems().add(Role.CUSTOMER);
         roleChoiceBox.getItems().add(Role.EMPLOYEE);
         roleChoiceBox.setValue(Role.CUSTOMER);
     }
 
-    public void fillFields(User user)
-    {
+    public void fillFields(User user) {
         this.user = user;
         if (user != null) {
             firstNameTextField.setText(user.getFirstName());
@@ -77,15 +72,13 @@ public class CRUDMemberViewController extends BaseController implements Initiali
         if (existingUserEdited) {
             confirmPassword();
             userService.editUser(user);
-        }
-        else
+        } else
             userService.addUser(user);
         controller = loadTabWithEvent("members-view.fxml", tab, event);
         controller.setTab(tab);
     }
 
-    private void confirmPassword()
-    {
+    private void confirmPassword() {
         if (passwordField.getText().isEmpty() || passwordField.getText().isEmpty())
             return;
         if (passwordField.getText().equals(confirmPasswordField.getText()))
@@ -94,8 +87,7 @@ public class CRUDMemberViewController extends BaseController implements Initiali
     }
 
     //code below: https://stackoverflow.com/questions/32346893/javafx-datepicker-not-updating-value by user: https://stackoverflow.com/users/833070/draken
-    private LocalDate getBirthDate()
-    {
+    private LocalDate getBirthDate() {
         return birthDatePicker.getConverter().fromString(birthDatePicker.getEditor().getText());
     }
 

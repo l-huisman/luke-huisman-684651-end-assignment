@@ -49,15 +49,17 @@ public class User {
     public LocalDate getBirthDate() {
         return birthDate;
     }
+
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
+    }
+
     public String getFormattedBirthDate() {
         return birthDate.format(java.time.format.DateTimeFormatter.ofPattern("dd-MM-yyyy"));
     }
 
     public void setFormattedBirthDate(String formattedBirthDate) {
         this.birthDate = LocalDate.parse(formattedBirthDate);
-    }
-    public void setBirthDate(LocalDate birthDate) {
-        this.birthDate = birthDate;
     }
 
     public String getPassword() {

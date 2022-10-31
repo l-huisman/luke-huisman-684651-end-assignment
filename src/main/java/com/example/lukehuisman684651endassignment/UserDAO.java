@@ -3,7 +3,6 @@ package com.example.lukehuisman684651endassignment;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +11,24 @@ import java.util.Scanner;
 public class UserDAO {
 
     private static final String USERSFILEPATH = "src/main/resources/users.dataset";
+
+    private static PrintWriter generatePrintWriter(String tempFile) throws IOException {
+        FileWriter fw = new FileWriter(tempFile, true);
+        BufferedWriter bw = new BufferedWriter(fw);
+        PrintWriter pw = new PrintWriter(bw);
+        return pw;
+    }
+
+    private static void renameFile(File newFile) throws IOException {
+        Files.delete(Path.of(USERSFILEPATH));
+        newFile.renameTo(new File(USERSFILEPATH));
+    }
+
+    private static void closeWriters(PrintWriter pw, Scanner scanner) {
+        scanner.close();
+        pw.flush();
+        pw.close();
+    }
 
     public User checkCredentialsOfEmployee(int userID, String password) {
         List<User> users = getUsers();
@@ -42,8 +59,7 @@ public class UserDAO {
         return users;
     }
 
-    private boolean fileExists()
-    {
+    private boolean fileExists() {
         return Path.of(USERSFILEPATH).toFile().exists();
     }
 
@@ -60,7 +76,7 @@ public class UserDAO {
         int nextAvailableUserID = getNextAvailableUserID();
         try {
             File file = new File(USERSFILEPATH);
-            FileWriter fw = new FileWriter(file,true);
+            FileWriter fw = new FileWriter(file, true);
             fw.write(nextAvailableUserID + "," + user.getFirstName() + "," + user.getLastName() + "," + user.getPassword() + "," + user.getBirthDate() + "," + user.getRole() + "\n");
             fw.close();
         } catch (Exception e) {
@@ -73,7 +89,7 @@ public class UserDAO {
         File oldFile = new File(USERSFILEPATH);
         File newFile = new File(tempFile);
         String[] attributes;
-        try{
+        try {
             PrintWriter pw = generatePrintWriter(tempFile);
             Scanner scanner = new Scanner(oldFile);
             while (scanner.hasNextLine()) {
@@ -121,13 +137,12 @@ public class UserDAO {
         }
     }
 
-    public void deleteUser(User user)
-    {
+    public void deleteUser(User user) {
         String tempFile = "src/main/resources/temp.dataset";
         File oldFile = new File(USERSFILEPATH);
         File newFile = new File(tempFile);
         String[] attributes;
-        try{
+        try {
             PrintWriter pw = generatePrintWriter(tempFile);
             Scanner scanner = new Scanner(oldFile);
             while (scanner.hasNextLine()) {
@@ -140,23 +155,5 @@ public class UserDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    private static PrintWriter generatePrintWriter(String tempFile) throws IOException {
-        FileWriter fw = new FileWriter(tempFile, true);
-        BufferedWriter bw = new BufferedWriter(fw);
-        PrintWriter pw = new PrintWriter(bw);
-        return pw;
-    }
-
-    private static void renameFile(File newFile) throws IOException {
-        Files.delete(Path.of(USERSFILEPATH));
-        newFile.renameTo(new File(USERSFILEPATH));
-    }
-
-    private static void closeWriters(PrintWriter pw, Scanner scanner) {
-        scanner.close();
-        pw.flush();
-        pw.close();
     }
 }

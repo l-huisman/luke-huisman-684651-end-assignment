@@ -85,8 +85,7 @@ public class BaseController {
         return null;
     }
 
-    protected BaseController loadTabWithoutEvent(String s, Tab tab)
-    {
+    protected BaseController loadTabWithoutEvent(String s, Tab tab) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(s));
             tab.setContent(loader.load());

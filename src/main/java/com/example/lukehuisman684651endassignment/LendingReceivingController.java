@@ -30,8 +30,7 @@ public class LendingReceivingController extends BaseController implements Initia
     private LibraryService libraryService = new LibraryService();
 
     @Override
-    public void initialize(URL location, ResourceBundle resources)
-    {
+    public void initialize(URL location, ResourceBundle resources) {
 
     }
 

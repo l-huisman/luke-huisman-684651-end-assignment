@@ -23,6 +23,24 @@ public class LibraryDAO {
         return !Objects.equals(libraryItem.getAvailability(), Boolean.parseBoolean(attribute));
     }
 
+    private static PrintWriter generatePrintWriter(String tempFile) throws IOException {
+        FileWriter fw = new FileWriter(tempFile, true);
+        BufferedWriter bw = new BufferedWriter(fw);
+        PrintWriter pw = new PrintWriter(bw);
+        return pw;
+    }
+
+    private static void renameFile(File newFile) throws IOException {
+        Files.delete(Path.of(LIBRARYITEMSFILEPATH));
+        newFile.renameTo(new File(LIBRARYITEMSFILEPATH));
+    }
+
+    private static void closeWriters(PrintWriter pw, Scanner scanner) {
+        scanner.close();
+        pw.flush();
+        pw.close();
+    }
+
     // Method to get all library items from a csv file contain both movies and books
     public List<LibraryItem> getLibraryItems() {
         List<LibraryItem> libraryItems = new ArrayList<>();
@@ -52,8 +70,7 @@ public class LibraryDAO {
         }
     }
 
-    private LibraryItem createLibraryItem(String[] attributes)
-    {
+    private LibraryItem createLibraryItem(String[] attributes) {
         // Attributes 0: itemCode, 1:title, 2:availability, 3:memberIdentifier, 4:dateLent, 5:author
         return new LibraryItem(Integer.parseInt(attributes[0]), attributes[1], Boolean.parseBoolean(attributes[2]), Integer.parseInt(attributes[3]), ifNullSetDateNow(attributes[4]), attributes[5]);
     }
@@ -84,8 +101,7 @@ public class LibraryDAO {
                 if (hasEqualItemCode(libraryItem, attributes[0]) && !recordChanged && compareAvailability(libraryItem, attributes[2])) {
                     pw.print(libraryItem.getItemCode() + "," + libraryItem.getTitle() + "," + libraryItem.getAvailability() + "," + libraryItem.getMemberIdentifier() + "," + libraryItem.getDateLent() + "," + libraryItem.getAuthor() + "\n");
                     recordChanged = true;
-                }
-                else
+                } else
                     pw.print(attributes[0] + "," + attributes[1] + "," + attributes[2] + "," + attributes[3] + "," + attributes[4] + "," + attributes[5] + "\n");
                 // Attributes are as followed: 0: itemCode, 1:title, 2:availability, 3:memberIdentifier, 4:dateLent, 5:author
             }
@@ -113,26 +129,8 @@ public class LibraryDAO {
         }
         return null;
     }
-    private boolean fileExists()
-    {
+
+    private boolean fileExists() {
         return Path.of(LIBRARYITEMSFILEPATH).toFile().exists();
-    }
-
-    private static PrintWriter generatePrintWriter(String tempFile) throws IOException {
-        FileWriter fw = new FileWriter(tempFile, true);
-        BufferedWriter bw = new BufferedWriter(fw);
-        PrintWriter pw = new PrintWriter(bw);
-        return pw;
-    }
-
-    private static void renameFile(File newFile) throws IOException {
-        Files.delete(Path.of(LIBRARYITEMSFILEPATH));
-        newFile.renameTo(new File(LIBRARYITEMSFILEPATH));
-    }
-
-    private static void closeWriters(PrintWriter pw, Scanner scanner) {
-        scanner.close();
-        pw.flush();
-        pw.close();
     }
 }
