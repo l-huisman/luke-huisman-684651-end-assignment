@@ -9,7 +9,7 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
-public class CRUDMemberViewController extends BaseController implements Initializable {
+public class CRUDMemberController extends BaseController implements Initializable {
 
     UserService userService = new UserService();
     boolean existingUserEdited = false;
@@ -31,7 +31,7 @@ public class CRUDMemberViewController extends BaseController implements Initiali
     private Label errorLabel;
     private User user;
 
-    public CRUDMemberViewController() {
+    public CRUDMemberController() {
     }
 
     @Override

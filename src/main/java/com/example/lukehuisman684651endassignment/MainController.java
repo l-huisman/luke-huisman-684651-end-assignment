@@ -35,6 +35,7 @@ public class MainController extends BaseController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         controller = loadTabWithoutEvent("lending-receiving-view.fxml", lendingReceivingTab);
         controller.setTab(lendingReceivingTab);
+        ((LendingReceivingController) controller).setWelcomeLabel(user);
         initializeTabListeners();
     }
 

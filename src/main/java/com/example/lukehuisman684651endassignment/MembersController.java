@@ -65,7 +65,7 @@ public class MembersController extends BaseController implements Initializable {
         User user = membersTable.getSelectionModel().getSelectedItem();
         controller = loadTabWithEvent("crud-member-view.fxml", tab, event);
         controller.setTab(tab);
-        ((CRUDMemberViewController) controller).fillFields(user);
+        ((CRUDMemberController) controller).fillFields(user);
     }
 
     @FXML

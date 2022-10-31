@@ -133,4 +133,36 @@ public class LibraryDAO {
     private boolean fileExists() {
         return Path.of(LIBRARYITEMSFILEPATH).toFile().exists();
     }
+
+    public void deleteLibraryItemFromFile(LibraryItem libraryItem) {
+        boolean recordDeleted = false;
+        String tempFile = "src/main/resources/temp.dataset";
+        File oldFile = new File(LIBRARYITEMSFILEPATH);
+        File newFile = new File(tempFile);
+        String[] attributes = new String[6];
+        try {
+            PrintWriter pw = generatePrintWriter(tempFile);
+            Scanner scanner = new Scanner(oldFile);
+            while (scanner.hasNext()) {
+                attributes = scanner.nextLine().split(",");
+                // Checking for x parameters, so the wrong record isn't deleted
+                // 1: Check if the itemCode is the same
+                // 2: Check if the memberIdentifier is the same
+                // 3: Check if there is no record deleted yet
+                if (hasEqualItemCode(libraryItem, attributes[0]) && hasEqualMemberIdentifier(libraryItem, attributes[3]) && !recordDeleted) {
+                    recordDeleted = true;
+                    continue;
+                }
+                pw.print(attributes[0] + "," + attributes[1] + "," + attributes[2] + "," + attributes[3] + "," + attributes[4] + "," + attributes[5] + "\n");
+            }
+            closeWriters(pw, scanner);
+            renameFile(newFile);
+            } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    private boolean hasEqualMemberIdentifier(LibraryItem libraryItem, String attribute)
+    {
+        return libraryItem.getMemberIdentifier() == Integer.parseInt(attribute);
+    }
 }

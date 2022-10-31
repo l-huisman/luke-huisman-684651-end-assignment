@@ -10,7 +10,7 @@
           xmlns="http://javafx.com/javafx/17.0.2-ea"
           fx:controller="com.example.lukehuisman684651endassignment.LendingReceivingController">
     <children>
-        <Label alignment="CENTER" text="Welcome [name of user]">
+        <Label fx:id="welcomeLabel" alignment="CENTER" text="Welcome">
             <font>
                 <Font size="32.0"/>
             </font>

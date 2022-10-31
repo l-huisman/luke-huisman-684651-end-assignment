@@ -27,8 +27,13 @@ public class LendingReceivingController extends BaseController implements Initia
     private Label lendingCriteriaLabel;
     @FXML
     private Label receivingCriteriaLabel;
+    @FXML
+    private Label welcomeLabel;
     private LibraryService libraryService = new LibraryService();
 
+    public void setWelcomeLabel(User user) {
+        this.welcomeLabel.setText("Welcome " + user.getFirstName() + " " + user.getLastName());
+    }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 

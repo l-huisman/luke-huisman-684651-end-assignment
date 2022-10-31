@@ -28,17 +28,17 @@
                 <Insets left="30.0" right="30.0"/>
             </GridPane.margin>
         </TableView>
-        <Button onMouseClicked="#addItemButtonClicked" prefWidth="80.0" text="Add Item" GridPane.rowIndex="2">
+        <Button fx:id="addItemButton" onMouseClicked="#addItemButtonClicked" prefWidth="80.0" text="Add Item" GridPane.rowIndex="2">
             <GridPane.margin>
                 <Insets left="30.0"/>
             </GridPane.margin>
         </Button>
-        <Button onMouseClicked="#editItemButtonClicked" prefWidth="80.0" text="Edit Item" GridPane.rowIndex="2">
+        <Button fx:id="editItemButton" onMouseClicked="#editItemButtonClicked" prefWidth="80.0" text="Edit Item" GridPane.rowIndex="2">
             <GridPane.margin>
                 <Insets left="130.0"/>
             </GridPane.margin>
         </Button>
-        <Button onMouseClicked="#deleteItemButtonClicked" prefWidth="80.0" text="Delete Item" GridPane.rowIndex="2">
+        <Button fx:id="deleteItemButton" onMouseClicked="#deleteItemButtonClicked" prefWidth="80.0" text="Delete Item" GridPane.rowIndex="2">
             <GridPane.margin>
                 <Insets left="230.0"/>
             </GridPane.margin>

@@ -46,4 +46,8 @@ public class LibraryService {
     public List<LibraryItem> getLibraryItems() {
         return libraryDAO.getLibraryItems();
     }
+
+    public void deleteItem(LibraryItem libraryItem) {
+        libraryDAO.deleteLibraryItemFromFile(libraryItem);
+    }
 }

@@ -2,6 +2,7 @@ package com.example.lukehuisman684651endassignment;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -22,6 +23,13 @@ public class CollectionController extends BaseController implements Initializabl
     private TableColumn<LibraryItem, String> titleColumn;
     @FXML
     private TableColumn<LibraryItem, String> authorDirectorColumn;
+    @FXML
+    private Button addItemButton;
+    @FXML
+    private Button editItemButton;
+    @FXML
+    private Button deleteItemButton;
+
     private LibraryService libraryService = new LibraryService();
 
     @Override
@@ -42,6 +50,11 @@ public class CollectionController extends BaseController implements Initializabl
                     setText(Boolean.TRUE.equals(item) ? "Yes" : "No");
                 }
             }
+        });
+
+        libraryItemsTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            editItemButton.setDisable(false);
+            deleteItemButton.setDisable(false);
         });
     }
 
@@ -67,6 +80,8 @@ public class CollectionController extends BaseController implements Initializabl
 
     @FXML
     public void deleteItemButtonClicked() {
-        //TODO
+        LibraryItem libraryItem = libraryItemsTable.getSelectionModel().getSelectedItem();
+        libraryService.deleteItem(libraryItem);
+        libraryItemsTable.getItems().remove(libraryItem);
     }
 }

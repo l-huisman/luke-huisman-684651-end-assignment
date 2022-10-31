@@ -7,7 +7,7 @@
 <GridPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="375.0" maxWidth="935.0" prefHeight="475.0" prefWidth="935.0"
           style="-fx-background-color: #E5E5E5" stylesheets="@main-stylesheet.css"
           xmlns="http://javafx.com/javafx/17.0.2-ea"
-          fx:controller="com.example.lukehuisman684651endassignment.CRUDMemberController">
+          fx:controller="com.example.lukehuisman684651endassignment.CRUDLibraryController">
     <children>
         <Label alignment="CENTER" text="Members" textFill="#6f6f6f">
             <font>
