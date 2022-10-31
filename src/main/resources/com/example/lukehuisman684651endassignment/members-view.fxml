@@ -34,12 +34,12 @@
                 <Insets left="30.0"/>
             </GridPane.margin>
         </Button>
-        <Button onMouseClicked="#editMemberButtonClicked" prefWidth="80.0" text="Edit Item" GridPane.rowIndex="2">
+        <Button fx:id="editMemberButton" disable="true" onMouseClicked="#editMemberButtonClicked" prefWidth="80.0" text="Edit Item" GridPane.rowIndex="2">
             <GridPane.margin>
                 <Insets left="130.0"/>
             </GridPane.margin>
         </Button>
-        <Button onMouseClicked="#deleteMemberButtonClicked" prefWidth="80.0" text="Delete Item" GridPane.rowIndex="2">
+        <Button fx:id="deleteMemberButton" disable="true" onMouseClicked="#deleteMemberButtonClicked" prefWidth="80.0" text="Delete Item" GridPane.rowIndex="2">
             <GridPane.margin>
                 <Insets left="230.0"/>
             </GridPane.margin>

@@ -35,8 +35,9 @@ public class MainController extends BaseController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        controller = loadTabWithoutEvent("lending-receiving-view.fxml", lendingReceivingTab);
+        controller.setTab(lendingReceivingTab);
         initializeTabListeners();
-        loadTab("lending-receiving-view.fxml", lendingReceivingTab);
     }
 
     private void initializeTabListeners() {
@@ -46,14 +47,15 @@ public class MainController extends BaseController implements Initializable {
                 public void changed(ObservableValue<? extends Tab> ov, Tab t, Tab t1) {
                     switch (t1.getId()) {
                         case "lendingReceivingTab":
-                            loadTab("lending-receiving-view.fxml", lendingReceivingTab);
+                            controller = loadTabWithoutEvent("lending-receiving-view.fxml", lendingReceivingTab);
+                            controller.setTab(lendingReceivingTab);
                             break;
                         case "collectionTab":
-                            controller = loadTab("collection-view.fxml", collectionTab);
+                            controller = loadTabWithoutEvent("collection-view.fxml", collectionTab);
                             controller.setTab(collectionTab);
                             break;
                         case "membersTab":
-                            controller = loadTab("members-view.fxml", membersTab);
+                            controller = loadTabWithoutEvent("members-view.fxml", membersTab);
                             controller.setTab(membersTab);
                             break;
                     }

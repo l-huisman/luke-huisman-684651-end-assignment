@@ -74,7 +74,19 @@ public class BaseController {
         event.consume();
     }
 
-    protected BaseController loadTab(String s, Tab tab) {
+    protected BaseController loadTabWithEvent(String s, Tab tab, Event event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(s));
+            tab.setContent(loader.load());
+            return loader.getController();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    protected BaseController loadTabWithoutEvent(String s, Tab tab)
+    {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(s));
             tab.setContent(loader.load());

@@ -26,6 +26,10 @@ public class User {
         return userID;
     }
 
+    public void setUserID(int userID) {
+        this.userID = userID;
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -47,6 +51,10 @@ public class User {
     }
     public String getFormattedBirthDate() {
         return birthDate.format(java.time.format.DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+    }
+
+    public void setFormattedBirthDate(String formattedBirthDate) {
+        this.birthDate = LocalDate.parse(formattedBirthDate);
     }
     public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;

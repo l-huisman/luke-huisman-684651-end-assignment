@@ -72,15 +72,11 @@ public class LibraryDAO {
         File newFile = new File(tempFile);
         String[] attributes = new String[6];
         try {
-            FileWriter fw = new FileWriter(tempFile, true);
-            BufferedWriter bw = new BufferedWriter(fw);
-            PrintWriter pw = new PrintWriter(bw);
-            Scanner x = new Scanner(new File(LIBRARYITEMSFILEPATH));
-            x.useDelimiter("[,\n]");
-            while (x.hasNext()) {
-                for (int i = 0; i < 6; i++) {
-                    attributes[i] = x.next();
-                }
+
+            PrintWriter pw = generatePrintWriter(tempFile);
+            Scanner scanner = new Scanner(oldFile);
+            while (scanner.hasNext()) {
+                attributes = scanner.nextLine().split(",");
                 // Check for 3 parameters before changing the record to avoid changing the wrong record in the file
                 // 1: Check if the itemCode is the same
                 // 2: Check if a record during this while loop hasn't been changed yet
@@ -88,16 +84,13 @@ public class LibraryDAO {
                 if (hasEqualItemCode(libraryItem, attributes[0]) && !recordChanged && compareAvailability(libraryItem, attributes[2])) {
                     pw.print(libraryItem.getItemCode() + "," + libraryItem.getTitle() + "," + libraryItem.getAvailability() + "," + libraryItem.getMemberIdentifier() + "," + libraryItem.getDateLent() + "," + libraryItem.getAuthor() + "\n");
                     recordChanged = true;
-                    continue;
                 }
-                pw.print(attributes[0] + "," + attributes[1] + "," + attributes[2] + "," + attributes[3] + "," + attributes[4] + "," + attributes[5] + "\n");
+                else
+                    pw.print(attributes[0] + "," + attributes[1] + "," + attributes[2] + "," + attributes[3] + "," + attributes[4] + "," + attributes[5] + "\n");
                 // Attributes are as followed: 0: itemCode, 1:title, 2:availability, 3:memberIdentifier, 4:dateLent, 5:author
             }
-            x.close();
-            pw.flush();
-            pw.close();
-            Files.delete(oldFile.toPath());
-            newFile.renameTo(new File(LIBRARYITEMSFILEPATH));
+            closeWriters(pw, scanner);
+            renameFile(newFile);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -123,5 +116,23 @@ public class LibraryDAO {
     private boolean fileExists()
     {
         return Path.of(LIBRARYITEMSFILEPATH).toFile().exists();
+    }
+
+    private static PrintWriter generatePrintWriter(String tempFile) throws IOException {
+        FileWriter fw = new FileWriter(tempFile, true);
+        BufferedWriter bw = new BufferedWriter(fw);
+        PrintWriter pw = new PrintWriter(bw);
+        return pw;
+    }
+
+    private static void renameFile(File newFile) throws IOException {
+        Files.delete(Path.of(LIBRARYITEMSFILEPATH));
+        newFile.renameTo(new File(LIBRARYITEMSFILEPATH));
+    }
+
+    private static void closeWriters(PrintWriter pw, Scanner scanner) {
+        scanner.close();
+        pw.flush();
+        pw.close();
     }
 }

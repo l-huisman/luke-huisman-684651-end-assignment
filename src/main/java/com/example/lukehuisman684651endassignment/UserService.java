@@ -15,8 +15,11 @@ public class UserService {
 
     public void addUser(User user) {
         user.setPassword(setStandardPassword(user));
-        user.setRole(Role.CUSTOMER);
         userDAO.addUser(user);
+    }
+
+    public void editUser(User user) {
+        userDAO.editUser(user);
     }
 
     private String setStandardPassword(User user) {
@@ -26,5 +29,10 @@ public class UserService {
 
     private String deleteSpaces(String lastName) {
         return lastName.replace(" ", "");
+    }
+
+    public void deleteUser(User user)
+    {
+        userDAO.deleteUser(user);
     }
 }

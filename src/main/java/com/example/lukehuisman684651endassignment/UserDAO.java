@@ -58,12 +58,33 @@ public class UserDAO {
         if (userExists(user.getFirstName(), user.getLastName()))
             return;
         int nextAvailableUserID = getNextAvailableUserID();
-
         try {
             File file = new File(USERSFILEPATH);
             FileWriter fw = new FileWriter(file,true);
-            fw.write("\n" + nextAvailableUserID + "," + user.getFirstName() + "," + user.getLastName() + "," + user.getPassword() + "," + user.getBirthDate() + "," + user.getRole());
+            fw.write(nextAvailableUserID + "," + user.getFirstName() + "," + user.getLastName() + "," + user.getPassword() + "," + user.getBirthDate() + "," + user.getRole() + "\n");
             fw.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void editUser(User user) {
+        String tempFile = "src/main/resources/temp.dataset";
+        File oldFile = new File(USERSFILEPATH);
+        File newFile = new File(tempFile);
+        String[] attributes;
+        try{
+            PrintWriter pw = generatePrintWriter(tempFile);
+            Scanner scanner = new Scanner(oldFile);
+            while (scanner.hasNextLine()) {
+                attributes = scanner.nextLine().split(",");
+                if (Integer.parseInt(attributes[0]) == user.getUserID())
+                    pw.println(user.getUserID() + "," + user.getFirstName() + "," + user.getLastName() + "," + user.getPassword() + "," + user.getBirthDate() + "," + user.getRole());
+                else
+                    pw.println(attributes[0] + "," + attributes[1] + "," + attributes[2] + "," + attributes[3] + "," + attributes[4] + "," + attributes[5]);
+            }
+            closeWriters(pw, scanner);
+            renameFile(newFile);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -98,5 +119,44 @@ public class UserDAO {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void deleteUser(User user)
+    {
+        String tempFile = "src/main/resources/temp.dataset";
+        File oldFile = new File(USERSFILEPATH);
+        File newFile = new File(tempFile);
+        String[] attributes;
+        try{
+            PrintWriter pw = generatePrintWriter(tempFile);
+            Scanner scanner = new Scanner(oldFile);
+            while (scanner.hasNextLine()) {
+                attributes = scanner.nextLine().split(",");
+                if (Integer.parseInt(attributes[0]) != user.getUserID())
+                    pw.println(attributes[0] + "," + attributes[1] + "," + attributes[2] + "," + attributes[3] + "," + attributes[4] + "," + attributes[5]);
+            }
+            closeWriters(pw, scanner);
+            renameFile(newFile);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static PrintWriter generatePrintWriter(String tempFile) throws IOException {
+        FileWriter fw = new FileWriter(tempFile, true);
+        BufferedWriter bw = new BufferedWriter(fw);
+        PrintWriter pw = new PrintWriter(bw);
+        return pw;
+    }
+
+    private static void renameFile(File newFile) throws IOException {
+        Files.delete(Path.of(USERSFILEPATH));
+        newFile.renameTo(new File(USERSFILEPATH));
+    }
+
+    private static void closeWriters(PrintWriter pw, Scanner scanner) {
+        scanner.close();
+        pw.flush();
+        pw.close();
     }
 }

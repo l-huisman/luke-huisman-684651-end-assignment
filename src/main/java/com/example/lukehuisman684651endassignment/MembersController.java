@@ -2,6 +2,7 @@ package com.example.lukehuisman684651endassignment;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -26,10 +27,23 @@ public class MembersController extends BaseController implements Initializable {
     private TableColumn<User, String> birthDateColumn;
     @FXML
     private TableColumn<User, String> roleColumn;
+    @FXML
+    private Button editMemberButton;
+    @FXML
+    private Button deleteMemberButton;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         initializeTableView();
+        initializeListeners();
+    }
+
+    private void initializeListeners()
+    {
+        membersTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            editMemberButton.setDisable(false);
+            deleteMemberButton.setDisable(false);
+        });
     }
 
     private void initializeTableView() {
@@ -44,17 +58,22 @@ public class MembersController extends BaseController implements Initializable {
 
     @FXML
     public void addMemberButtonClicked(MouseEvent event) {
-        controller = loadTab("crud-member-view.fxml", tab);
+        controller = loadTabWithEvent("crud-member-view.fxml", tab, event);
         controller.setTab(tab);
     }
 
     @FXML
-    public void editMemberButtonClicked() {
-        //TODO
+    public void editMemberButtonClicked(MouseEvent event) {
+        User user = membersTable.getSelectionModel().getSelectedItem();
+        controller = loadTabWithEvent("crud-member-view.fxml", tab, event);
+        controller.setTab(tab);
+        ((CRUDMemberViewController) controller).fillFields(user);
     }
 
     @FXML
     public void deleteMemberButtonClicked() {
-        //TODO
+        User user = membersTable.getSelectionModel().getSelectedItem();
+        userService.deleteUser(user);
+        membersTable.getItems().remove(user);
     }
 }
